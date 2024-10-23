@@ -3,6 +3,7 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.core.exceptions import ValidationError
 from .managers import UserManager
+from decimal import Decimal
 
 def validate_image_size(image):
     max_size = 2 * 1024 * 1024
@@ -129,6 +130,14 @@ class User(AbstractBaseUser, PermissionsMixin):
         null=True,
     )
 
+    referred_by = models.ForeignKey(
+        'self', 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True, 
+        related_name='referrals'
+    )
+
     account_type = models.CharField(
         max_length=50,
         choices=ACCOUNT_TYPE,
@@ -147,6 +156,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_banned = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
 
+    has_received_bonus = models.BooleanField(default=False)
+
     objects = UserManager()
 
     USERNAME_FIELD = 'number'
@@ -157,3 +168,25 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.number
+    
+    def add_bonus(self):
+        if self.account_type == 'STL':
+            self.balance += Decimal(50.00)
+        elif self.account_type == 'TL':
+            self.balance += Decimal(30.00)
+        elif self.account_type == 'TR':
+            self.balance += Decimal(10.00)
+        self.save()
+
+    @classmethod
+    def distribute_bonuses(cls):
+        for user in cls.objects.filter(is_staff=True):
+            if not user.has_received_bonus:
+                user.add_bonus()
+                user.has_received_bonus = True
+                user.save()
+
+def promote_user_to_admin(user):
+    user.is_staff = True
+    user.add_bonus()
+    user.save()

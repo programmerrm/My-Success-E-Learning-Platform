@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from decimal import Decimal
 
 User = get_user_model()
 
@@ -114,10 +115,25 @@ class User_Register_Form(forms.ModelForm):
 
         if password and confirm_password and password != confirm_password:
             raise forms.ValidationError("Passwords do not match")
+        
+    def clean_referral_code(self):
+        code = self.cleaned_data.get('referral_code')
+        if code:
+            try:
+                referral_user = User.objects.get(user_id=code)
+                return referral_user
+            except User.DoesNotExist:
+                raise forms.ValidationError('Invalid referral code')
+        return None
 
     def save(self, commit=True):
-        user = self.instance
-        user.set_password(self.cleaned_data.get('password'))
+        user = super().save(commit=False)
+        referral_user = self.cleaned_data.get('referral_code')
+        if referral_user:
+            user.referred_by = referral_user
+            referral_user.balance += Decimal(0.30)
+            referral_user.save()
         if commit:
+            user.set_password(self.cleaned_data['password'])
             user.save()
         return user
