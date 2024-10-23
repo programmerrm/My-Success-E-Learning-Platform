@@ -16,9 +16,10 @@
 
 # Date =====>>>> 23/10/2024 8:50 PM ======== This project create and setup done
 
-
 # Date =====>>>> 23/10/2024 8:50 PM ======= Account page working start
 
 # user model create =====>>> 23/10/2024 8:52 PM -------
+# user model create done =======> 23/10/2024 10:47 PM ---------
 
+# user register form create =======>>>>> 23/10/2024 10:50 PM -----------
 
