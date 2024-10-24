@@ -1,0 +1,62 @@
+.user-section {
+    padding: 100px 0;
+}
+
+.user-section-top-bar {
+    row-gap: 10px;
+    padding-bottom: 50px;
+}
+
+.user-section-top-bar h2 {
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.user-section-main {
+    grid-template-columns: repeat(2, 25% 75%);
+    background-color: var(--white-color);
+    border-radius: 10px;
+}
+
+.side-bar-wrapper {
+    border-right: 1px solid #F7F5FF;
+}
+
+.user-main-content {
+    padding: 50px 50px;
+}
+
+.user-name-bio {
+    padding: 50px 0 0 50px;
+    row-gap: 10px;
+}
+
+.user-name-bio h4 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.user-settings {
+    margin-top: 30px;
+    padding-bottom: 50px;
+}
+
+.user-settings ul {
+    row-gap: 10px;
+}
+
+.user-settings ul .active {
+    background-color: #F8F7FD;
+}
+
+.user-settings ul li {
+    border-radius: 5px;
+    transition: all ease 0.3s;
+}
+
+.user-settings ul li:hover {
+    background-color: #F8F7FD;
+}
+.user-settings ul li a {
+    padding: 12px 0 12px 50px;
+}

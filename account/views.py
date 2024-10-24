@@ -15,10 +15,12 @@ class User_Login_TemplateView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         form = User_Login_Form()
-        return render(request, self.template_name, {'form': form})
+        side_bar = Login_Register_Side_Bar.objects.first()
+        return render(request, self.template_name, {'form': form, 'side_bar': side_bar})
 
     def post(self, request, *args, **kwargs):
         form = User_Login_Form(request.POST)
+        side_bar = Login_Register_Side_Bar.objects.first()
 
         if form.is_valid():
             number = form.cleaned_data.get('number')
@@ -38,7 +40,7 @@ class User_Login_TemplateView(TemplateView):
         else:
             messages.error(request, 'Please fill in all fields.')
 
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form, 'side_bar': side_bar})
 
 class User_Register_CreateView(CreateView):
     template_name = 'account/user_register/index.html'
@@ -69,8 +71,5 @@ class User_Register_CreateView(CreateView):
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        response = super().form_invalid(form)
-        return response
-
-
-  
+        side_bar = Login_Register_Side_Bar.objects.first()
+        return render(self.request, self.template_name, {'form': form, 'side_bar': side_bar})

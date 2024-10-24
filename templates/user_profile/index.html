@@ -1,2 +1,39 @@
 {% extends "../common/base.html" %}
+{% load static %}
 {% block title %}My Success E-Learning Platform User{% endblock title %}
+{% block css_link %}
+    <link rel="stylesheet" href="{% static "css/user_profile/style.css" %}">
+{% endblock css_link %}
+
+{% block main_content %}
+<section class="user-section">
+    <div class="common-wrap">
+        <div class="user-section-top-bar flex flex-col align-items-center justify-content-center">
+            <h2>Hey, {{ user.first_name }} {{ user.last_name }}</h2>
+            <div class="flex flex-row align-items-center">
+                <a href="{% url 'home_page' %}">Home</a>
+                <span>/</span>
+                <i>{{ request.path }}</i>
+            </div>
+        </div>
+        <div class="user-section-main grid">
+            {% include "./side_bar.html" %}
+            <div class="user-main-content flex flex-col">
+                {% if request.resolver_match.url_name == 'user_profile' %}
+                    {% include "./profile.html" %}
+                {% elif request.resolver_match.url_name == 'user_referral' %}
+                    {% include "./referral.html" %}
+                {% elif request.resolver_match.url_name == 'user_passbook' %}
+                    {% include "./passbook.html" %}
+                {% elif request.resolver_match.url_name == 'user_withdrawal' %}
+                    {% include "./withdrawal.html" %}
+                {% elif request.resolver_match.url_name == 'user_change_password' %}
+                    {% include "./change_password.html" %}
+                {% elif request.resolver_match.url_name == 'user_address' %}
+                    {% include "./address.html" %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main_content %}

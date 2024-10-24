@@ -90,33 +90,4 @@
     outline: none;
 }
 
-.form div select {
-    padding: 12px 20px;
-    border: 5px;
-    font-size: 1rem;
-    font-weight: 500;
-    font-family: var(--body-font-family);
-    color: var(--gray-color);
-}
 
-.form div:nth-child(3) {
-    width: 40%;
-}
-
-.form div:nth-child(4) {
-    width: 55%;
-}
-
-.form div:nth-child(10) {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: row;
-    flex-flow: row;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-column-gap: 10px;
-    -moz-column-gap: 10px;
-    column-gap: 10px;
-    padding: 5px 0;
-}
