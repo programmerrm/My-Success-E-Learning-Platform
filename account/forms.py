@@ -138,8 +138,8 @@ class User_Register_Form(forms.ModelForm):
             user.save()
         return user
 
-class User_Login_Form(forms.ModelForm):
-    
+class User_Login_Form(forms.Form):
+
     number = forms.CharField(
         label='WhatsApp Number',
         max_length=11,
@@ -149,12 +149,15 @@ class User_Login_Form(forms.ModelForm):
         }),
     )
 
-    email = forms.EmailField(
-        label='Email',
-        min_length=8,
-        max_length=50,
-        required=True,
-        widget=forms.EmailInput(attrs={
-            'placeholder': 'Type your email'
+    password = forms.CharField(
+        label='Password',
+        min_length=5,
+        max_length=15,
+        widget=forms.PasswordInput(attrs={
+            'placeholder': '********',
         }),
     )
+
+    class Meta:
+        model = User
+        fields = ['number', 'password']

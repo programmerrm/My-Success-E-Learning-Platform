@@ -61,7 +61,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     image = models.ImageField(
         upload_to='images/',
         validators=[validate_image_size],
-        default=None,
+        default='images/default-avatar.png',
         blank=True,
         null=True,
     )

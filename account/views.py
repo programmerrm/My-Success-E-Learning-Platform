@@ -1,19 +1,45 @@
 import random
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView
-from .forms import User_Register_Form
+from django.contrib.auth import authenticate, login, logout
+from .forms import User_Register_Form, User_Login_Form
+from global_futures .models import Login_Register_Side_Bar
 from .models import User
 
 # Create your views here.
 
 class User_Login_TemplateView(TemplateView):
-    template_name = 'account/index.html'
-    
+    template_name = 'account/user_login/index.html'
+
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name)
-    
+        form = User_Login_Form()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = User_Login_Form(request.POST)
+
+        if form.is_valid():
+            number = form.cleaned_data.get('number')
+            password = form.cleaned_data.get('password')
+
+            user = authenticate(request, number=number, password=password)
+
+            if user:
+                if user.role == 'USER':
+                    login(request, user)
+                    messages.success(request, 'User logged in successfully!')
+                    return redirect('home_page')
+                else:
+                    messages.error(request, 'Access denied: you do not have permission to log in.')
+            else:
+                messages.error(request, 'Invalid number or password.')
+        else:
+            messages.error(request, 'Please fill in all fields.')
+
+        return render(request, self.template_name, {'form': form})
+
 class User_Register_CreateView(CreateView):
     template_name = 'account/user_register/index.html'
     form_class = User_Register_Form
@@ -27,13 +53,14 @@ class User_Register_CreateView(CreateView):
 
     def get(self, request, *args, **kwargs):
         form = self.get_form()
+        side_bar = Login_Register_Side_Bar.objects.first()
 
         referral_code = kwargs.get('referral_code')
 
         if referral_code:
             form.fields['referral_code'].initial = str(referral_code)
 
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form, 'side_bar': side_bar})
 
     def form_valid(self, form):
         user_id = self.generate_unique_user_id()
@@ -44,4 +71,6 @@ class User_Register_CreateView(CreateView):
     def form_invalid(self, form):
         response = super().form_invalid(form)
         return response
-    
+
+
+  

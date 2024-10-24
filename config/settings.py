@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'courses_page',
     'FAQ_page',
     'support_page',
+    'global_futures',
 ]
 
 AUTH_USER_MODEL = 'account.User'
