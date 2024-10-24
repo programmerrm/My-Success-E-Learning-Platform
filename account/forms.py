@@ -137,3 +137,24 @@ class User_Register_Form(forms.ModelForm):
             user.set_password(self.cleaned_data['password'])
             user.save()
         return user
+
+class User_Login_Form(forms.ModelForm):
+    
+    number = forms.CharField(
+        label='WhatsApp Number',
+        max_length=11,
+        required=True,
+        widget=forms.TextInput(attrs={
+            'placeholder': 'WhatsApp number',
+        }),
+    )
+
+    email = forms.EmailField(
+        label='Email',
+        min_length=8,
+        max_length=50,
+        required=True,
+        widget=forms.EmailInput(attrs={
+            'placeholder': 'Type your email'
+        }),
+    )
