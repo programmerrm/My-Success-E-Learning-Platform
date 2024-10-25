@@ -1,2 +1,32 @@
 {% extends "../common/base.html" %}
+{% load static %}
 {% block title %}My Success E-Learning Platform Blogs{% endblock title %}
+{% block css_link %}
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static "css/blogs_page/style.css" %}">
+{% endblock css_link %}
+
+{% block main_content %}
+    <section class="blog-section">
+        <div class="blog-section-top-bar flex flex-col justify-content-center align-items-center">
+            <div class="blog-section-top-bar-inner flex flex-col">
+                <h2>Blog</h2>
+                <div class="flex flex-row align-items-center">
+                    <a href="{% url "home_page" %}">Home</a>
+                    <span>/</span>
+                    <i>Blog</i>
+                </div>
+            </div>
+        </div>
+        <div class="common-wrap">
+            <div class="blog-section-inner grid">
+                {% include "./all_blog.html" %}
+                {% include "./side_bar.html" %}
+            </div>
+        </div>
+    </section>
+{% endblock main_content %}
+
+{% block js_link %}
+    <script src="{% static "js/blogs_page/index.js" %}" defer></script>
+{% endblock js_link %}

@@ -1,0 +1,39 @@
+{% load static %}
+<div class="side-bar-wrapper">
+    <div class="side-bar-inner">
+        <form class="form-wrapper" action="{% url "blog_page" %}" method="GET">
+            <div>
+                <input type="search" name="search" id="search" placeholder="Search..." />
+            </div>
+            <div>
+                <button type="submit">
+                    <i class="ri-search-line"></i>
+                </button>
+            </div>
+        </form>
+        {% if all_categories %}
+        <div class="categorie-wrapper">
+            <h4>Categories</h4>
+            <div>
+                {% for categorie in all_categories %}
+                <li>
+                    <a href="{% url 'blog_categorie' id=categorie.id %}">{{ categorie.name }} ({{ categorie.blogmodel_set.count }})</a>
+                </li>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% if all_tags %}
+        <div class="tag-wrapper">
+            <h4>Tags</h4>
+            <div>
+                {% for tag in all_tags %}
+                <li>
+                    <a href="{% url 'blog_tag' id=tag.id %}">{{ tag.name }}</a>
+                </li>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>

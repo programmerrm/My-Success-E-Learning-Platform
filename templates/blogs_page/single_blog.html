@@ -1,0 +1,9 @@
+{% load static %}
+<div class="single-blog-wrapper">
+    <div class="single-blog-title">
+        <h2>{{ blog.title }}</h2>
+    </div>
+    <div class="single-blog-content">
+        {{ blog.content|safe }}
+    </div>
+</div>
