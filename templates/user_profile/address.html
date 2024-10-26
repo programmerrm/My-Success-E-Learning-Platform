@@ -1,1 +1,11 @@
-<h2>Address page</h2>
+{% load static %}
+<div class="user-profile-info flex flex-col">
+    <h2>Profile Updated</h2>
+    <form class="user-profile-info-change-form flex flex-col" method="POST" action="{% url 'user_address' %}">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <div>
+            <button class="btn" type="submit">Update Profile</button>
+        </div>
+    </form>
+</div>

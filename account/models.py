@@ -106,6 +106,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         null=True
     )
 
+    address = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+    )
+
     city = models.CharField(
         max_length=20,
         blank=True,

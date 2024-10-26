@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
+from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
+from .forms import Custome_User_Profile_Info
 
 class UserBaseTemplateView(TemplateView):
     template_name = 'user_profile/index.html'
@@ -17,20 +19,19 @@ class UserBaseTemplateView(TemplateView):
         })
         return context
 
-class ChangePasswordTemplateView(UserBaseTemplateView):
+class AddressTemplateView(UserBaseTemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = PasswordChangeForm(user=self.request.user)
+        context['form'] = Custome_User_Profile_Info(instance=self.request.user)
         return context
 
     def post(self, request, *args, **kwargs):
-        form = PasswordChangeForm(user=request.user, data=request.POST)
+        form = Custome_User_Profile_Info(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            # Add message or redirect here if necessary
-        context = self.get_context_data()
-        context['form'] = form
-        return render(request, self.template_name, context)
+            messages.success(request, 'Profile updated successfully!')
+            return redirect('user_address')
+        return render(request, self.template_name, {'form': form})
 
 class ProfileTemplateView(UserBaseTemplateView):
     pass
@@ -44,6 +45,16 @@ class PassbookTemplateView(UserBaseTemplateView):
 class WithdrawalTemplateView(UserBaseTemplateView):
     pass
 
+class ChangePasswordTemplateView(UserBaseTemplateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = PasswordChangeForm(user=self.request.user)
+        return context
 
-class AddressTemplateView(UserBaseTemplateView):
-    pass
+    def post(self, request, *args, **kwargs):
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+        context = self.get_context_data()
+        context['form'] = form
+        return render(request, self.template_name, context)

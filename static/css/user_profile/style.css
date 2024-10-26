@@ -102,6 +102,54 @@
     border: 1px solid var(--theme-color);
 }
 
+.user-profile-info h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.user-profile-info-change-form {
+    margin-top: 30px;
+    row-gap: 20px;
+}
+
+.user-profile-info-change-form div {
+    display: flex;
+    flex-flow: column wrap;
+    row-gap: 10px;
+}
+
+.user-profile-info-change-form div label {}
+
+.user-profile-info-change-form div input {
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: var(--body-font-family);
+    background-color: var(--white-color);
+    color: var(--gray-color);
+    border: none;
+    outline: none;
+    border: 1px solid var(--gray-color);
+}
+
+.user-profile-info-change-form div input:focus {
+    border: 1px solid var(--theme-color);
+}
+
+.user-profile-info-change-form div textarea {
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: var(--body-font-family);
+    color: var(--gray-color);
+}
+
+.user-profile-info-change-form div textarea:focus {
+    border: 1px solid var(--theme-color);
+}
+
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
     .user-section-main {
