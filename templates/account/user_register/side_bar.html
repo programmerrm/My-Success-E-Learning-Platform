@@ -1,8 +1,10 @@
 {% load static %}
 <div class="side-bar-wrapper flex flex-row justify-space-between bg-style" style="background-image: url('{% static "images/account-bg.png" %}');">
-    <a class="logo" href="{% url 'home_page' %}">
-        <img src="{{ side_bar.logo.url }}" alt="Site Logo" loading="lazy" decoding="async" />
-    </a>
+    <div class="logo-wrapper flex flex-col">
+        <a class="logo" href="{% url 'home_page' %}">
+            <img src="{{ side_bar.logo.url }}" alt="Site Logo" loading="lazy" decoding="async" />
+        </a>
+    </div>
     <div class="title flex flex-col">
         <h2>{{ side_bar.title }}</h2>
     </div>

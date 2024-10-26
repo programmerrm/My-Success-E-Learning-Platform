@@ -544,6 +544,36 @@ button:focus {
     color: var(--theme-color);
 }
 
+.errorlist li {
+    color: red;
+    font-weight: 500;
+}
+
+.messages {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    left: auto;
+}
+.messages .error {
+    padding: 15px 20px;
+    border-radius: 5px;
+    background-color: var(--orange-deep);
+    color: var(--white-color);
+}
+.messages .success {
+    padding: 15px 20px;
+    border-radius: 5px;
+    background-color: #198754;
+    color: var(--white-color);
+}
+.messages .warning {
+    padding: 15px 20px;
+    border-radius: 5px;
+    background-color: #FFC107;
+    color: var(--white-color);
+}
+
 /********************************************************
 ***************** Flex style Start *********************/
 

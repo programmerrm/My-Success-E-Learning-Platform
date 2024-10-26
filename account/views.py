@@ -67,7 +67,7 @@ class User_Register_CreateView(CreateView):
     def form_valid(self, form):
         user_id = self.generate_unique_user_id()
         form.instance.user_id = user_id
-
+        messages.success(self.request, 'User Register successfully')
         return super().form_valid(form)
 
     def form_invalid(self, form):

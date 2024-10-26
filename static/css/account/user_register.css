@@ -15,6 +15,10 @@
     padding: 50px 80px;
 }
 
+.logo-wrapper {
+    width: 100%;
+}
+
 .title h2 {
     color: var(--white-color);
     font-size: 1.5rem;
@@ -119,4 +123,109 @@
     -moz-column-gap: 10px;
     column-gap: 10px;
     padding: 5px 0;
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+    .side-bar-wrapper {
+        padding: 30px 30px;
+    }
+
+    .form-wrapper {
+        padding: 30px 50px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    .side-bar-wrapper {
+        padding: 30px 30px;
+    }
+
+    .form-wrapper {
+        padding: 30px 30px;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 767px) {
+    .register-inner {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .side-bar-wrapper {
+        padding: 20px 20px;
+        -moz-row-gap: 30px;
+        -ms-row-gap: 30px;
+        -o-row-gap: 30px;
+        row-gap: 30px;
+    }
+
+    .title h2 {
+        font-size: 1rem;
+    }
+
+    .form-wrapper {
+        padding: 20px 20px;
+    }
+
+    .form-top-bar h2 {
+        font-size: 1.5rem;
+    }
+
+    .form div label {
+        font-weight: 400;
+    }
+
+    .form div:nth-child(3) {
+        width: 100%;
+    }
+
+    .form div:nth-child(4) {
+        width: 100%;
+    }
+
+    .form div select {
+        font-weight: 400;
+    }
+}
+
+@media only screen and (max-width: 499px) {
+    .register-inner {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .side-bar-wrapper {
+        padding: 20px 20px;
+        -moz-row-gap: 30px;
+        -ms-row-gap: 30px;
+        -o-row-gap: 30px;
+        row-gap: 30px;
+    }
+
+    .title h2 {
+        font-size: 1rem;
+    }
+
+    .form-wrapper {
+        padding: 20px 20px;
+    }
+
+    .form-top-bar h2 {
+        font-size: 1.5rem;
+    }
+
+    .form div label {
+        font-weight: 400;
+    }
+
+    .form div:nth-child(3) {
+        width: 100%;
+    }
+
+    .form div:nth-child(4) {
+        width: 100%;
+    }
+
+    .form div select {
+        font-weight: 400;
+    }
 }
