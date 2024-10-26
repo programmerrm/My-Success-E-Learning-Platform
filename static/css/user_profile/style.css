@@ -1,5 +1,6 @@
 .user-section {
     padding: 100px 0;
+    background-color: var(--page-bg);
 }
 
 .user-section-top-bar {
@@ -57,6 +58,172 @@
 .user-settings ul li:hover {
     background-color: #F8F7FD;
 }
+
 .user-settings ul li a {
     padding: 12px 0 12px 50px;
+}
+
+.user-change-password-wrapper {
+    width: 50%;
+}
+
+.user-change-password-wrapper h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.password-change-form {
+    margin-top: 30px;
+    row-gap: 20px;
+}
+
+.form-group label {
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: var(--body-font-family);
+}
+
+.form-group {
+    row-gap: 5px;
+}
+
+.form-group input {
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: var(--body-font-family);
+    background-color: var(--white-color);
+    color: var(--gray-color);
+    border: 1px solid var(--gray-color);
+}
+
+.form-group input:focus {
+    border: 1px solid var(--theme-color);
+}
+
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+    .user-section-main {
+        grid-template-columns: repeat(2, 30% 70%);
+    }
+
+    .user-change-password-wrapper {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .user-section-main {
+        grid-template-columns: repeat(2, 35% 65%);
+    }
+
+    .user-change-password-wrapper {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 767px) {
+    .user-section {
+        padding: 50px 0;
+    }
+
+    .user-change-password-wrapper {
+        width: 100%;
+    }
+
+    .user-section-top-bar h2 {
+        font-size: 1.5rem;
+    }
+
+    .user-section-top-bar {
+        padding-bottom: 30px;
+    }
+
+    .user-section-main {
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: 30px;
+    }
+
+    .user-name-bio {
+        padding: 10px 20px;
+    }
+
+    .user-name-bio h4 {
+        font-size: 1.2rem;
+    }
+
+    .user-settings {
+        margin-top: 10px;
+        padding: 0;
+    }
+
+    .user-main-content {
+        padding: 0 20px 20px 20px;
+    }
+
+    .user-settings ul li a {
+        padding: 12px 0 12px 20px;
+    }
+
+    .user-change-password-wrapper h2 {
+        font-size: 1.2rem;
+    }
+
+    .form-group label {
+        font-weight: 400;
+    }
+}
+
+@media only screen and (max-width: 499px) {
+    .user-change-password-wrapper {
+        width: 100%;
+    }
+
+    .user-section {
+        padding: 50px 0;
+    }
+
+    .user-section-top-bar h2 {
+        font-size: 1.5rem;
+    }
+
+    .user-section-top-bar {
+        padding-bottom: 30px;
+    }
+
+    .user-section-main {
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: 30px;
+    }
+
+    .user-name-bio {
+        padding: 10px 20px;
+    }
+
+    .user-name-bio h4 {
+        font-size: 1.2rem;
+    }
+
+    .user-settings {
+        margin-top: 10px;
+        padding: 0;
+    }
+
+    .user-main-content {
+        padding: 0 20px 20px 20px;
+    }
+
+    .user-settings ul li a {
+        padding: 12px 0 12px 20px;
+    }
+
+    .user-change-password-wrapper h2 {
+        font-size: 1.2rem;
+    }
+
+    .form-group label {
+        font-weight: 400;
+    }
+
 }
