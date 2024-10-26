@@ -4,6 +4,32 @@ from decimal import Decimal
 
 User = get_user_model()
 
+class Sub_Admin_Login_Form(forms.Form):
+
+    account_type = forms.ChoiceField(
+        label='Account Type',
+        choices=User.ACCOUNT_TYPE,
+        required=True,
+    )
+
+    number = forms.CharField(
+        label='WhatsApp Number',
+        max_length=11,
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'WhatsApp number'}),
+    )
+
+    password = forms.CharField(
+        label='Password',
+        min_length=5,
+        max_length=15,
+        widget=forms.PasswordInput(attrs={'placeholder': '********'}),
+    )
+
+    class Meta:
+        model = User
+        fields = ['account_type', 'number', 'password',]
+
 class User_Register_Form(forms.ModelForm):
 
     email = forms.EmailField(
@@ -161,3 +187,4 @@ class User_Login_Form(forms.Form):
     class Meta:
         model = User
         fields = ['number', 'password']
+

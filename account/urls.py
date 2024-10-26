@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import User_Login_TemplateView, User_Register_CreateView
+from .views import User_Login_TemplateView, User_Register_CreateView, Sub_Admin_Login_TemplateView
 
 urlpatterns = [
     path('user/login/', User_Login_TemplateView.as_view(), name='user_login'),
@@ -7,7 +7,7 @@ urlpatterns = [
     path('user/register/<int:referral_code>/', User_Register_CreateView.as_view(), name='user_register'),
     # path('user/logout'),
 
-    # path('sub-admin/login/'),
+    path('sub-admin/login/', Sub_Admin_Login_TemplateView.as_view(), name='sub_admin_login'),
     # path('sub-admin/logout/'),
 
     # path('password/reset/'),

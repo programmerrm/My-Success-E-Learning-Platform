@@ -1,8 +1,8 @@
-.register-section {
+.sub-admin-login-section {
     height: 100vh;
 }
 
-.register-inner {
+.sub-admin-login-inner {
     grid-template-columns: repeat(2, 40% 60%);
     width: 100%;
     height: 100%;
@@ -103,26 +103,11 @@
     color: var(--gray-color);
 }
 
-.form div:nth-child(3) {
-    width: 40%;
-}
-
-.form div:nth-child(4) {
-    width: 55%;
-}
-
-.form div:nth-child(10) {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: row;
-    flex-flow: row;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-column-gap: 10px;
-    -moz-column-gap: 10px;
-    column-gap: 10px;
-    padding: 5px 0;
+.forgot-password {
+    color: var(--theme-color);
+    text-decoration: underline;
+    font-weight: 500;
+    max-width: 120px;
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
@@ -136,7 +121,6 @@
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-
     .side-bar-wrapper {
         padding: 30px 30px;
     }
@@ -147,7 +131,7 @@
 }
 
 @media only screen and (min-width: 500px) and (max-width: 767px) {
-    .register-inner {
+    .sub-admin-login-inner {
         grid-template-columns: repeat(1, 1fr);
     }
 
@@ -175,21 +159,13 @@
         font-weight: 400;
     }
 
-    .form div:nth-child(3) {
-        width: 100%;
-    }
-
-    .form div:nth-child(4) {
-        width: 100%;
-    }
-
-    .form div select {
+    .forgot-password {
         font-weight: 400;
     }
 }
 
 @media only screen and (max-width: 499px) {
-    .register-inner {
+    .sub-admin-login-inner {
         grid-template-columns: repeat(1, 1fr);
     }
 
@@ -217,15 +193,8 @@
         font-weight: 400;
     }
 
-    .form div:nth-child(3) {
-        width: 100%;
-    }
-
-    .form div:nth-child(4) {
-        width: 100%;
-    }
-
-    .form div select {
+    .forgot-password {
         font-weight: 400;
     }
+
 }

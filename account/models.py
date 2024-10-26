@@ -43,9 +43,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     ]
 
     USER_ROLES = [
-        ('user', 'User'),
-        ('admin', 'Admin'),
-        ('sub_admin', 'Sub Admin'),
+        ('USER', 'User'),
+        ('ADMIN', 'Admin'),
+        ('SUB_ADMIN', 'Sub Admin'),
     ]
 
     COUNTRY_CODE = [

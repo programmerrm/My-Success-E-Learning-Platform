@@ -1,0 +1,19 @@
+{% extends "../../common/base.html" %}
+{% load static %}
+{% block title %}My Success E-Learning Platform Sub Admin Login Form{% endblock title %}
+{% block css_link %}
+    <link rel="stylesheet" href="{% static "css/account/sub_admin_login.css" %}">
+{% endblock css_link %}
+
+{% block main_content %}
+    <section class="sub-admin-login-section">
+        <div class="sub-admin-login-inner grid">
+            {% include "./side_bar.html" %}
+            {% include "./form.html" %}
+        </div>
+    </section>
+{% endblock main_content %}
+
+{% block js_link %}
+    <script src="{% static "js/account/sub_admin-login.js" %}" defer></script>
+{% endblock js_link %}

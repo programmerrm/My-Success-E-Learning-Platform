@@ -12,7 +12,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = os.getenv('DEBUG') == "True"
+DEBUG = os.getenv('DEBUG', 'False') == "True"
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 
@@ -105,7 +105,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 
 LOGIN_URL = 'login/'
 
