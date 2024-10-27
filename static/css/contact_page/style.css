@@ -1,0 +1,43 @@
+.contact-section {
+    background-color: var(--page-bg);
+}
+
+.contact-top-bar {
+    padding: 100px 0;
+    background: var(--gradient-banner-bg);
+}
+
+.contact-top-bar-inner {
+    column-gap: 10px;
+}
+
+.contact-top-bar-inner a {
+    color: var(--disable-color);
+    transition: all ease 0.3s;
+}
+
+.contact-top-bar-inner a:hover {
+    color: var(--white-color);
+}
+
+.contact-top-bar-inner div {
+    column-gap: 10px;
+}
+
+.contact-top-bar-inner div span {
+    color: var(--white-color);
+}
+
+.contact-top-bar-inner div i {
+    color: var(--white-color);
+    text-decoration: underline;
+}
+
+.contact-wrapper {
+    grid-template-columns: repeat(2, 40% 60%);
+    background-color: var(--white-color);
+}
+
+.contact-info {
+    padding: 80px 50px;
+}

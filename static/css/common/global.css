@@ -573,6 +573,12 @@ button:focus {
     background-color: #FFC107;
     color: var(--white-color);
 }
+.w-full {
+    width: 100%;
+}
+.h-full {
+    height: 100%;
+}
 
 /********************************************************
 ***************** Flex style Start *********************/
