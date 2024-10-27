@@ -150,7 +150,6 @@
     border: 1px solid var(--theme-color);
 }
 
-
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
     .user-section-main {
         grid-template-columns: repeat(2, 30% 70%);
