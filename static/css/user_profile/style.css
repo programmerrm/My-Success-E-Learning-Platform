@@ -150,6 +150,153 @@
     border: 1px solid var(--theme-color);
 }
 
+
+
+
+.user_withdrawal-wrapper h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.user_withdrawal-wrapper h4 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.user_withdrawal-form {
+    row-gap: 15px;
+    padding: 20px 0;
+}
+
+.user_withdrawal-form div {
+    display: flex;
+    flex-flow: column wrap;
+    row-gap: 5px;
+}
+
+.user_withdrawal-form div label {
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: var(--body-font-family);
+}
+
+.user_withdrawal-form div input {
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: var(--body-font-family);
+    background-color: var(--white-color);
+    color: var(--gray-color);
+    border: 1px solid var(--gray-color);
+}
+
+.user_withdrawal-form div select {
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: var(--body-font-family);
+    color: var(--gray-color);
+}
+
+.user_withdrawal-list h3 {
+    font-weight: 500;
+}
+
+.no-withdrawal-list {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.withdrawal-list-top {
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.withdrawal-list-bottom {
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.withdrawal-list-bottom td {
+    text-align: center;
+}
+
+.user_withdrawal-list table {
+    row-gap: 20px;
+    padding: 20px 0;
+}
+
+.user_withdrawal-list table thead tr th {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.user_withdrawal-list table tbody {
+    row-gap: 10px;
+}
+
+.step-links {
+    row-gap: 10px;
+}
+
+.withdrawals-has-previous {
+    column-gap: 10px;
+}
+
+.user-referral-wrapper {
+    row-gap: 20px;
+}
+
+.user-referral-list table thead tr {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.user-referral-list table thead tr th {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.user-referral-list table tbody tr {
+    grid-template-columns: repeat(5, 1fr);
+    text-align: center;
+}
+
+.user-referral-list table tbody tr td {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.user-referral-list table tbody {
+    row-gap: 10px;
+}
+
+.user-referral-code {
+    row-gap: 10px;
+}
+
+.user-referral-code h4 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.user-referral-code b {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.user-referral-list h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.user-referral-list table {
+    margin-top: 20px;
+    row-gap: 20px;
+}
+
+
+
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
     .user-section-main {
         grid-template-columns: repeat(2, 30% 70%);

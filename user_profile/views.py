@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
+from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
-from .forms import Custome_User_Profile_Info
+from .forms import Custome_User_Profile_Info, WithdrawalRequestForm
+from .models import WithdrawalProcess
 
 class UserBaseTemplateView(TemplateView):
     template_name = 'user_profile/index.html'
@@ -19,6 +21,71 @@ class UserBaseTemplateView(TemplateView):
         })
         return context
 
+class ReferralTemplateView(UserBaseTemplateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+        
+        context['user_id'] = user.user_id
+        context['full_name'] = f"{user.first_name} {user.last_name}"
+        context['email'] = user.email
+        
+        referred_users = user.referrals.all()
+        
+        paginator = Paginator(referred_users, 4) 
+        page_number = self.request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
+        context['referred_users'] = page_obj
+        context['page_obj'] = page_obj
+        
+        return context
+
+class ProfileTemplateView(UserBaseTemplateView):
+    pass
+
+class PassbookTemplateView(UserBaseTemplateView):
+    pass
+
+class WithdrawalTemplateView(UserBaseTemplateView):
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = WithdrawalRequestForm()
+        
+        withdrawals_list = WithdrawalProcess.objects.filter(user=self.request.user)
+        
+        paginator = Paginator(withdrawals_list, 3) 
+        page_number = self.request.GET.get('page')
+        withdrawals = paginator.get_page(page_number)
+        
+        context['withdrawals'] = withdrawals
+        return context
+
+    def post(self, request, *args, **kwargs):
+        form = WithdrawalRequestForm(request.POST)
+        if form.is_valid():
+            amount = form.cleaned_data['amount']
+            user_balance = request.user.balance
+
+            if amount > user_balance:
+                messages.error(request, "Insufficient balance to make this withdrawal.")
+            else:
+                withdrawal = form.save(commit=False)
+                withdrawal.user = request.user
+                withdrawal.status = 'pending'
+                withdrawal.save()
+
+                request.user.balance -= amount
+                request.user.save()
+
+                messages.success(request, "Withdrawal request submitted successfully! An admin will review it.")
+                return redirect('user_withdrawal')
+        else:
+            messages.error(request, "There was an error with your withdrawal request.")
+
+        return render(request, self.template_name, {'form': form, 'withdrawals': WithdrawalProcess.objects.filter(user=request.user)})
+
 class AddressTemplateView(UserBaseTemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -32,18 +99,6 @@ class AddressTemplateView(UserBaseTemplateView):
             messages.success(request, 'Profile updated successfully!')
             return redirect('user_address')
         return render(request, self.template_name, {'form': form})
-
-class ProfileTemplateView(UserBaseTemplateView):
-    pass
-
-class ReferralTemplateView(UserBaseTemplateView):
-    pass
-
-class PassbookTemplateView(UserBaseTemplateView):
-    pass
-
-class WithdrawalTemplateView(UserBaseTemplateView):
-    pass
 
 class ChangePasswordTemplateView(UserBaseTemplateView):
     def get_context_data(self, **kwargs):
