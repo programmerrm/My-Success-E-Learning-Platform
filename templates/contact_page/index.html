@@ -2,6 +2,7 @@
 {% load static %}
 {% block title %}My Success E-Learning Platform Contact Us{% endblock title %}
 {% block css_link %}
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="{% static "css/contact_page/style.css" %}">
 {% endblock css_link %}
 {% block main_content %}
@@ -19,10 +20,45 @@
             <div class="contact-inner flex flex-col w-full">
 
                 <div class="contact-wrapper grid w-full">
+
                     <div class="contact-info flex flex-col w-full">
                         <h4>Get in Touch</h4>
+                        <div class="get-touch-wrapper flex flex-col w-full">
+                            <div class="get-touch-inner flex flex-row align-items-center">
+                                <div class="get-touch-icon location flex flex-col align-items-center justify-content-center">
+                                    <i class="ri-map-pin-line"></i>
+                                </div>
+                                <div class="get-touch-link">
+                                    <span>{{ contact_info.location }}</span>
+                                </div>
+                            </div>
+                            <div class="get-touch-inner flex flex-row align-items-center">
+                                <div class="get-touch-icon email flex flex-col align-items-center justify-content-center">
+                                    <i class="ri-mail-add-line"></i>
+                                </div>
+                                <div class="get-touch-link">
+                                    <a href="mailto:{{ contact_info.email }}">{{ contact_info.email }}</a>
+                                </div>
+                            </div>
+                            <div class="get-touch-inner flex flex-row align-items-center">
+                                <div class="get-touch-icon phone flex flex-col align-items-center justify-content-center">
+                                    <i class="ri-phone-line"></i>
+                                </div>
+                                <div class="get-touch-link flex flex-col">
+                                    <a href="tel:{{ contact_info.phone }}">{{ contact_info.phone }}</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="help-line flex flex-col w-full">2</div>
+
+                    <div class="help-line flex flex-col w-full">
+                        <h4>Help-line</h4>
+                        <form class="help-line-form flex flex-col w-full" action="{% url 'contact_page' %}" method="POST">
+                            {% csrf_token %}
+                            {{ form.as_div }} 
+                            <button type="submit" class="btn">Submit</button>
+                        </form>
+                    </div>
                 </div>
 
                 <div class="google-map flex flex-col w-full">
