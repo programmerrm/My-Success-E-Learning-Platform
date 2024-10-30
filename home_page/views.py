@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from global_futures .models import LogoImage
-from .models import Banner_Section
+from .models import Banner_Section, Special_Fuature
 
 # Create your views here.
 
@@ -18,6 +18,8 @@ class IndexView(TemplateView):
             context['title'] = banner.title
             context['description'] = banner.description
             context['image'] = banner.image.url
+
+        context['special_fuature'] = Special_Fuature.objects.all()
 
         return context
 

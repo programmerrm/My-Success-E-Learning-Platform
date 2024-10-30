@@ -17,9 +17,119 @@
     grid-template-columns: repeat(2, 1fr);
     min-height: 800px;
 }
+
 .banner-content {
     row-gap: 30px;
 }
+
+.banner-short-title {
+    padding-bottom: 5px;
+    max-width: 260px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.banner-short-title p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 8px;
+    line-height: 1.8;
+}
+
 .banner-btn-group {
     column-gap: 20px;
+}
+
+.banner-title-warpper {
+    row-gap: 10px;
+}
+
+.banner-title-warpper h1 {
+    color: var(--white-color);
+    font-size: 2.5rem;
+    font-weight: 500;
+    max-width: 250px;
+}
+
+.banner-title-warpper h1 b {
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.banner-title-warpper p {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 80%;
+}
+
+.special-feature-section {
+    background-color: var(--white-color);
+}
+
+.special-feature-inner {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+
+.special_fuature-item {
+    padding: 40px 20px;
+    background-color: var(--white-color);
+    border-radius: 5px;
+}
+
+.special_fuature-item-icon {
+    width: 20%;
+}
+
+.special_fuature-item-content {
+    width: 70%;
+    row-gap: 10px;
+}
+
+.special_fuature-item-content p {
+    color: var(--gray-color);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+@media only screen and (min-width: 500px) and (max-width: 767px) {
+    .banner-inner {
+        row-gap: 50px;
+        padding-top: 160px;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media only screen and (max-width: 499px) {
+    .banner-inner {
+        row-gap: 30px;
+        padding-top: 160px;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .banner-short-title {
+        max-width: 240px;
+    }
+
+    .banner-short-title p {
+        font-size: 14px;
+    }
+
+    .banner-title-warpper h1 {
+        font-size: 2rem;
+        max-width: 70%;
+    }
+
+    .banner-title-warpper h1 b {
+        font-size: 2.5rem;
+    }
+
+    .banner-title-warpper p {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
 }

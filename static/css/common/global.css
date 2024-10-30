@@ -781,5 +781,8 @@ button:focus {
         width: 100px;
         height: 100px;
     }
+    .btn {
+        font-size: 14px;
+    }
 
 }
