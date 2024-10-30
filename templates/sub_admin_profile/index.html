@@ -1,2 +1,28 @@
 {% extends "../common/base.html" %}
+{% load static %}
 {% block title %}My Success E-Learning Platform Sub Admin{% endblock title %}
+{% block css_link %}
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static "css/sub_admin_profile/style.css" %}">
+{% endblock css_link %}
+{% block main_content %}
+    <section class="sub-admin-section">
+        <div class="grid w-full sub-admin-inner">
+
+            <div>
+                {% include "../common/sub_admin_side_bar.html" %}
+            </div>
+
+            
+
+            <div class="flex flex-col w-full">
+                {% include "../common/sub_admin_header.html" %}
+                <section class="sub-admin-content">
+                    <h2>maincontent</h2>
+                </section>
+                {% include "../common/sub_admin_footer.html" %}
+            </div>
+            
+        </div>
+    </section>
+{% endblock main_content %}

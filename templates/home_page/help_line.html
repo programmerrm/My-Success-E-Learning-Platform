@@ -1,0 +1,35 @@
+{% if help_line %}
+    {% for contact in help_line %}
+        <div class="help-line-wrapper">
+            <h2 class="title">Help-Line</h2>
+            <div class="alert-wrapper">
+                <i class="ri-notification-line"></i>
+                <p>Any kind of problem join here for solution</p>
+                <a href="{{ contact.telegram_url }}" target="_blank">Telegram</a>
+            </div>
+            <div class="help-line-support-wrapper">
+                <div class="support-inner">
+                    <h2 class="title">Any Kind Of Problem</h2>
+                    <div class="support-inner-content">
+                        <p>Joining Time: {{ contact.any_kind_of_problem_date }}</p>
+                        <a href="{{ contact.any_kind_of_problem_google_meeting_url }}" target="_blank">Join Meeting</a>
+                    </div>
+                </div>
+                <div class="support-inner">
+                    <h2 class="title">Team Leader</h2>
+                    <div class="support-inner-content">
+                        <p>Name: {{ contact.team_leader }}</p>
+                        <a href="tel:{{ contact.team_leader_whatup_number }}" target="_blank">Whatsapp</a>
+                    </div>
+                </div>
+                <div class="support-inner">
+                    <h2 class="title">Trainer</h2>
+                    <div class="support-inner-content">
+                        <p>Name: {{ contact.trainer }}</p>
+                        <a href="tel:{{ contact.trainer_whatup_number }}" target="_blank">Whatsapp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}

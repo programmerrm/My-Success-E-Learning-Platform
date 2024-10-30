@@ -1,0 +1,44 @@
+.sub-admin-section {
+    height: 100vh;
+}
+
+.sub-admin-inner {
+    grid-template-columns: repeat(2, 20% 80%);
+    height: 100%;
+}
+
+.sub-admin-side-bar-wrapper {
+    background-color: #7d35b8;
+    height: 100%;
+}
+
+.sub-admin-content {
+    height: 75vh;
+}
+
+.sub-menu-item {
+    column-gap: 10px;
+}
+.sub-menu-item-wrapper {
+    row-gap: 20px;
+    margin-top: 50px;
+}
+
+.header-section {
+    height: 15vh;
+}
+
+.header-inner {
+    padding: 0 30px;
+}
+
+.footer-section {
+    height: 10vh;
+    background-color: #F0F2F5;
+}
+
+.footer-inner {
+    height: 100%;
+}
+
+

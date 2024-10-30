@@ -1,0 +1,22 @@
+{% load static %}
+<section class="special-feature-section">
+    <div class="special-feature-wrapper">
+        <div class="common-wrap">
+            <div class="special-feature-inner">
+                {% if special_fuature %}
+                    {% for item in special_fuature %}
+                        <div class="special_fuature-item">
+                            <div class="special_fuature-item-icon">
+                                <img src="{{ item.image.url }}" alt="{{  item.title}}">
+                            </div>
+                            <div class="special_fuature-item-content">
+                                <h4>{{ item.title }}</h4>
+                                <p>{{ item.short_description }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

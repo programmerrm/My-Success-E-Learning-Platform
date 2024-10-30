@@ -1,0 +1,9 @@
+{% load static %}
+<header class="header-section bg-style flex flex-col justify-content-center align-items-center" style="background-image: url('{% static 'images/header-background.png' %}');">
+    <div class="header-inner flex flex-row justify-space-between align-items-center w-full">
+        <a class="btn" href="{% url "home_page" %}">Visit Site</a>
+        <button type="button">
+            profile
+        </button>
+    </div>
+</header>

@@ -1,0 +1,18 @@
+<div class="live-class-wrapper">
+    <h2 class="title">Join Live Classes</h2>
+    <div class="calss-wrapper">
+        {% if live_class %}
+            {% for class in live_class %}
+                <div class="class">
+                    <div class="class-content">
+                        <p>Class Topic: {{ class.class_topic }}</p>
+                        <p>Joining Time: {{ class.joining_time }}</p>
+                    </div>
+                    <a href="{{ class.join_meeting_url }}" class="google-meet-link" target="_blank">Join Meeting</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No live classes available.</p>
+        {% endif %}
+    </div>
+</div>

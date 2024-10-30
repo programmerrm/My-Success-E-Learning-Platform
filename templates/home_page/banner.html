@@ -1,0 +1,28 @@
+{% load static %}
+<section class="banner-section">
+    <div class="common-wrap">
+        <div class="banner-inner grid align-items-center justify-content-center w-full">
+            <div class="banner-content flex flex-col w-full">
+                <div class="banner-short-title flex- flex-col w-full">
+                    <p>{{ short_title }}</p>
+                </div>
+                <div class="banner-btn-group flex flex-row">
+                    {% if user.is_authenticated %}
+                    <a class="btn" href="{% url "user_login" %}">All Teacher</a>
+                    <a class="btn" href="#">All Course</a>
+                    {% else %}
+                        <a class="btn" href="{% url "user_login" %}">Login</a>
+                        <a class="btn" href="{% url "user_register" %}">Sing Up</a>
+                    {% endif %}
+                </div>
+                <div class="banner-title-warpper flex flex-col w-full">
+                    <h1>{{ title }}</h1>
+                    <p>{{ description }}</p>
+                </div>
+            </div>
+            <div class="banner-big-thumb flex flex-col w-full">
+                <img src="{{ image }}" alt="banner" loading="lazy" decoding="async">
+            </div>
+        </div>
+    </div>
+</section>

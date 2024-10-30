@@ -1,0 +1,25 @@
+.header-section {
+    padding: 20px 0;
+    position: absolute !important;
+    z-index: 999;
+}
+
+.banner-section {
+    background: var(--gradient-banner-bg);
+    min-height: 800px;
+}
+
+.banner-section .common-wrap {
+    min-height: 800px;
+}
+
+.banner-inner {
+    grid-template-columns: repeat(2, 1fr);
+    min-height: 800px;
+}
+.banner-content {
+    row-gap: 30px;
+}
+.banner-btn-group {
+    column-gap: 20px;
+}

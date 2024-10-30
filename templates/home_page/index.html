@@ -1,9 +1,15 @@
 {% extends "../common/base.html" %}
 {% load static %}
 {% block title %}My Success E-Learning Platform{% endblock title %}
+{% block css_link %}
+    <link rel="stylesheet" href="{% static "css/common/header_section.css" %}">
+    <link rel="stylesheet" href="{% static "css/home_page/style.css" %}">
+{% endblock css_link %}
+
+{% block header_section %}
+    {% include "../common/header_section.html" %}
+{% endblock header_section %}
 
 {% block main_content %}
-    <section>
-        <h2>Hello</h2>
-    </section>
+    {% include "./banner.html" %}
 {% endblock main_content %}
