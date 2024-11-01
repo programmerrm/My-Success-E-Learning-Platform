@@ -8,42 +8,6 @@ def validate_image_size(image):
 
 # Create your models here.
 
-class HeaderMenu(models.Model):
-
-    name = models.CharField(
-        max_length=50,
-        blank=True,
-        null=True,
-    )
-
-    url = models.URLField(
-        max_length=200,
-        blank=True,
-        null=True,
-    )
-
-class Contact_Info(models.Model):
-
-    name = models.CharField(
-        max_length=100,
-        null=True,
-        blank=True,
-    )
-
-class Footer_Bottom_Menu(models.Model):
-
-    name = models.CharField(
-        max_length=50,
-        null=True,
-        blank=True,
-    )
-
-    url = models.URLField(
-        max_length=200,
-        null=True,
-        blank=True,
-    )
-
 class Login_Register_Side_Bar(models.Model):
     logo = models.ImageField(
         upload_to='login-register-side-bar/',
@@ -85,38 +49,78 @@ class LogoImage(models.Model):
         null=True,
     )
 
-class HeaderSection(models.Model):
+class FooterLogo(models.Model):
 
-    menu_list = models.ForeignKey(
-        HeaderMenu,
-        on_delete=models.CASCADE,
-        related_name='header_section'
-    )
-
-class FooterSection(models.Model):
-
-    contact_info = models.ForeignKey(
-        Contact_Info,
-        on_delete=models.CASCADE,
-        related_name='contact_info',
-
-    )
-
-    payment_method_image = models.ImageField(
-        validators=[validate_image_size],
-        default='images/logo.png',
+    short_description = models.TextField(
+        max_length=250,
         blank=True,
         null=True,
     )
 
-    copy_right_text = models.CharField(
+    def __str__(self):
+        return self.short_description
+
+class SocialMediaIcon(models.Model):
+
+    image = models.ImageField(
+        upload_to='images/',
+        validators=[validate_image_size],
+        blank=True,
+        null=True,
+    )
+
+    url = models.URLField(
+        max_length=200,
+        blank=True,
+        null=True,
+    )
+
+    def __str__(self):
+        return self.url or "Social Media Icon"
+
+class ContactInfoFooter(models.Model):
+
+    address = models.CharField(
         max_length=150,
         blank=True,
         null=True,
     )
 
-    footer_bottom_menu_list = models.ForeignKey(
-        Footer_Bottom_Menu,
-        on_delete=models.CASCADE,
-        related_name='footer_section',
+    phone_number = models.CharField(
+        max_length=11,
+        blank=True,
+        null=True,
     )
+
+    email = models.EmailField(
+        max_length=100,
+        blank=True,
+        null=True,
+    )
+
+    def __str__(self):
+        return self.email
+
+class FooterCopyRightText(models.Model):
+
+    text = models.TextField(
+        max_length=200,
+        blank=True,
+        null=True,
+    )
+
+    def __str__(self):
+        return self.text
+
+class FooterPaymentMethodImage(models.Model):
+    
+    image = models.ImageField(
+        upload_to='images/',
+        validators=[validate_image_size],
+        blank=True,
+        null=True,
+    )
+
+    def __str__(self):
+        return f"Payment Method Image {self.id}"
+    

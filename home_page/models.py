@@ -119,3 +119,25 @@ class Help_Line(models.Model):
         blank=True,
     )
 
+class Achievement(models.Model):
+
+    image = models.ImageField(
+        upload_to='images/',
+        validators=[validate_image_size],
+        blank=True,
+        null=True,
+    )
+
+    title = models.CharField(
+        max_length=80,
+        null=True,
+        blank=True,
+    )
+
+    short_description = models.TextField(
+        max_length=200,
+        null=True,
+        blank=True,
+    )
+
+

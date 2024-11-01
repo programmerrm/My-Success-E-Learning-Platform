@@ -1,36 +1,39 @@
 {% load static %}
 <div class="all-blog-wrapper flex flex-col">
     <div class="all-blog-inner grid">
-        {% if all_blog %}
-            {% for blog in all_blog %}
-            <div class="blog-item flex flex-col">
-                <div class="blog-image flex flex-col">
+        {% if page_obj %}
+            {% for blog in page_obj %}
+            <div class="blog-item flex flex-col w-full">
+                <div class="blog-image flex flex-col w-full">
                     <img src="{{ blog.image.url }}" alt="{{ blog.title }}" loading="lazy" decoding="async">
                 </div>
-                <div class="blog-title flex flex-col">
+                <div class="blog-title flex flex-col w-full">
                     <h4>
                         <a href="{% url 'single_blog' id=blog.id %}">{{ blog.title }}</a>
                     </h4>
                 </div>
             </div>
             {% endfor %}
+        {% else %}
+            <p>No blogs available in this category/tag.</p>
         {% endif %}
     </div>
-    {% if page_obj %}
+
+    {% if page_obj.has_other_pages %}
     <div class="pagination flex flex-col justify-content-center align-items-center">
         <div>
             <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
         </div>
         <div class="flex flex-row align-items-center pagination-button">
             {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                <a class="btn" href="?page={{ page_obj.previous_page_number }}">Previous</a>
             {% else %}
-            <span class="disabled">Previous</span>
+                <span class="disabled">Previous</span>
             {% endif %}
             {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a class="btn" href="?page={{ page_obj.next_page_number }}">Next</a>
             {% else %}
-            <span class="disabled">Next</span>
+                <span class="disabled">Next</span>
             {% endif %}
         </div>
     </div>

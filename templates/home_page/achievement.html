@@ -1,0 +1,19 @@
+<section class="achievement-section">
+    <div class="common-wrap">
+        <div class="achievement-inner grid w-full">
+            {% if achievement %}
+                {% for achievement_item in achievement %}
+                    <div class="achievement-item flex flex-row w-full">
+                        <div class="achievement-item-icon flex flex-col">
+                            <img src="{{ achievement_item.image.url }}" alt="{{ achievement_item.title }}">
+                        </div>
+                        <div class="achievement-item-content flex flex-col">
+                            <h4>{{ achievement_item.title }}</h4>
+                            <p>{{ achievement_item.short_description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>

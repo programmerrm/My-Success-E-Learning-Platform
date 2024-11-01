@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from global_futures .models import LogoImage
-from .models import Banner_Section, Special_Fuature
+from .models import Banner_Section, Special_Fuature, Live_Class, Help_Line, Achievement
+from global_futures .models import FooterLogo, SocialMediaIcon, ContactInfoFooter, FooterPaymentMethodImage, FooterCopyRightText
 
 # Create your views here.
 
@@ -20,6 +21,15 @@ class IndexView(TemplateView):
             context['image'] = banner.image.url
 
         context['special_fuature'] = Special_Fuature.objects.all()
+        context['live_class'] = Live_Class.objects.all()
+        context['help_line'] = Help_Line.objects.all()
+        context['achievement'] = Achievement.objects.all()
+
+        context['footer_logo'] = FooterLogo.objects.first()
+        context['footer_social_media_icon'] = SocialMediaIcon.objects.all()
+        context['contact_info_footer'] = ContactInfoFooter.objects.first()
+        context['payment_method_image'] = FooterPaymentMethodImage.objects.first()
+        context['copy_right'] = FooterCopyRightText.objects.first()
 
         return context
 

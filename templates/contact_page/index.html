@@ -3,8 +3,15 @@
 {% block title %}My Success E-Learning Platform Contact Us{% endblock title %}
 {% block css_link %}
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static "css/common/header_section.css" %}">
     <link rel="stylesheet" href="{% static "css/contact_page/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/common/footer_section.css" %}">
 {% endblock css_link %}
+
+{% block header_section %}
+    {% include "../common/header_section.html" %}
+{% endblock header_section %}
+
 {% block main_content %}
     <section class="contact-section">
         <div class="contact-top-bar flex flex-col align-items-center justify-content-center w-full">
@@ -72,6 +79,10 @@
         </div>
     </scrion>
 {% endblock main_content %}
+
+{% block footer_section %}
+    {% include "../common/footer_section.html" %}
+{% endblock footer_section %}
 
 {% block js_link %}
     <script src="{% static "js/contact_page/index.js" %}" defer></script>

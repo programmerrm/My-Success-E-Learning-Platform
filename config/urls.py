@@ -8,6 +8,8 @@ urlpatterns = [
     path('', include('home_page.urls')),
     path('account/', include('account.urls')),
     path('user/', include('user_profile.urls')),
+    path('my-learning', include('my_learning.urls')),
+    path('home-work', include('home_work.urls')),
     path('sub-admin/', include('sub_admin_profile.urls')),
     path('blog/', include('blogs_page.urls')),
     path('about/', include('about_page.urls')),

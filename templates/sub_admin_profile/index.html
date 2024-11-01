@@ -9,17 +9,23 @@
     <section class="sub-admin-section">
         <div class="grid w-full sub-admin-inner">
 
-            <div>
+            <div class="flex flex-col w-full">
                 {% include "../common/sub_admin_side_bar.html" %}
             </div>
 
-            
-
             <div class="flex flex-col w-full">
                 {% include "../common/sub_admin_header.html" %}
+
                 <section class="sub-admin-content">
-                    <h2>maincontent</h2>
+                    {% if request.resolver_match.url_name == 'all_student' %}
+                        {% include "sub_admin_profile/all_student.html" %}
+                    {% elif request.resolver_match.url_name == 'sub_admin_profile' %}
+                        {% include "sub_admin_profile/profile_updated.html" %}
+                    {% elif request.resolver_match.url_name == 'change_password' %}
+                        {% include "sub_admin_profile/change_password.html" %}
+                    {% endif %}
                 </section>
+
                 {% include "../common/sub_admin_footer.html" %}
             </div>
             

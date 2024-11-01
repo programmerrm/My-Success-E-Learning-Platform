@@ -2,8 +2,24 @@
 <header class="header-section bg-style flex flex-col justify-content-center align-items-center" style="background-image: url('{% static 'images/header-background.png' %}');">
     <div class="header-inner flex flex-row justify-space-between align-items-center w-full">
         <a class="btn" href="{% url "home_page" %}">Visit Site</a>
-        <button type="button">
-            profile
+        <button class="profile-image" type="button">
+            <img src="{{ user.image.url }}" alt="sub-admin">
+            <div class="profile-sub-menu">
+                <ul class="flex flex-col">
+                    <li class="flex flex-row align-items-center">
+                        <i class="ri-user-3-fill"></i>
+                        <a href="{% url "sub_admin_profile" %}">Profile</a>
+                    </li>
+                    <li class="flex flex-row align-items-center">
+                        <i class="ri-settings-2-line"></i>
+                        <a href="{% url "change_password" %}">Change Password</a>
+                    </li>
+                    <li class="flex flex-row align-items-center">
+                        <i class="ri-logout-circle-r-line"></i>
+                        <a href="{% url "sub_admin_logout" %}">Log out</a>
+                    </li>
+                </ul>
+            </div>
         </button>
     </div>
 </header>

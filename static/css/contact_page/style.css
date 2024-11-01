@@ -1,3 +1,9 @@
+.header-section {
+    padding: 20px 0;
+    background: var(--gradient-banner-bg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .contact-section {
     background-color: var(--page-bg);
 
@@ -115,21 +121,24 @@
     font-size: 1.5rem;
     font-weight: 600;
 }
+
 .help-line-form {
     row-gap: 10px;
     margin-top: 20px;
 }
+
 .help-line-form div {
     display: flex;
     flex-flow: column wrap;
     width: 100%;
 }
 
-.help-line-form div label{
+.help-line-form div label {
     font-size: 1rem;
     font-weight: 500;
     font-family: var(--body-font-family);
 }
+
 .help-line-form div input {
     padding: 12px 20px;
     border-radius: 5px;
@@ -140,6 +149,7 @@
     color: var(--gray-color);
     border: 1px solid var(--disable-color);
 }
+
 .help-line-form div textarea {
     padding: 12px 20px;
     border-radius: 5px;

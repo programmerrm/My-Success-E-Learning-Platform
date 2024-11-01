@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'FAQ_page',
     'support_page',
     'global_futures',
+    'home_work',
+    'my_learning',
 ]
 
 AUTH_USER_MODEL = 'account.User'
@@ -70,6 +72,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
+
     'default': {
         'ENGINE': os.getenv('ENGINE'),
         'NAME': os.getenv('NAME'),
@@ -78,6 +81,18 @@ DATABASES = {
         'HOST': os.getenv('HOST'),
         'PORT': os.getenv('PORT'),
     }
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'mysucces_elp_0054',
+    #     'USER': 'mysucces_ariyan_islam',
+    #     'PASSWORD': 'Ariyan0054@',
+    #     'HOST': '14.128.15.154',
+    #     'PORT': '3306',
+    #     'OPTIONS': {  
+    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+    #     }
+    # }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -114,3 +129,11 @@ STATICFILES_DIRS = [STATIC_DIR]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 JAZZMIN_SETTINGS=JAZZMIN_SETTINGS
+
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'programmerwebrm@gmail.com')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', 'aoam ohfz vknx xgvi')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'programmerwebrm@gmail.com')

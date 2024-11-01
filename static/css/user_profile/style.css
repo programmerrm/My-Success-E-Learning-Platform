@@ -1,3 +1,7 @@
+.header-section {
+    padding: 20px 0;
+    background: var(--gradient-banner-bg);
+}
 .user-section {
     padding: 100px 0;
     background-color: var(--page-bg);
@@ -418,6 +422,9 @@
 
     .form-group label {
         font-weight: 400;
+    }
+    .user-main-content {
+        padding: 0;
     }
 
 }

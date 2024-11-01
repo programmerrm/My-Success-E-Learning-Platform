@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.forms import SetPasswordForm
+from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth import get_user_model
 from decimal import Decimal
 
@@ -188,3 +190,25 @@ class User_Login_Form(forms.Form):
         model = User
         fields = ['number', 'password']
 
+class ResetPasswordForm(SetPasswordForm):
+
+    new_password1 = forms.CharField(
+        label='New Password',
+        widget=forms.PasswordInput(
+            attrs={'autocomplete': 'new-password', 'class': 'form-control', 'placeholder': 'New Password'}
+        ),
+        strip=False,
+    )
+
+    new_password2 = forms.CharField(
+        label='Confirm Password',
+        widget=forms.PasswordInput(
+            attrs={'autocomplete': 'new-password', 'class': 'form-control', 'placeholder': 'Confirm Password'}
+        ),
+        strip=False,
+    )
+
+    def clean_new_password1(self):
+        password = self.cleaned_data.get('new_password1')
+        validate_password(password)
+        return password

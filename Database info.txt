@@ -1,0 +1,17 @@
+Database name: mysucces_elp_0054
+Data base User: mysucces_ariyan_islam
+Data base Password: Ariyan0054@
+
+
+
+
+
+
+Dev db info:
+define( 'DB_NAME', 'mysucces_wp855' );
+
+/** Database username */
+define( 'DB_USER', 'mysucces_wp855' );
+
+/** Database password */
+define( 'DB_PASSWORD', '[!11SHmpC1' );

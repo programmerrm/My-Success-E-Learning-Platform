@@ -3,8 +3,9 @@ from django.views.generic import TemplateView
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
-from .forms import Custome_User_Profile_Info, WithdrawalRequestForm
+from .forms import Custome_User_Profile_Info, WithdrawalRequestForm, User_Profile_Updated
 from .models import WithdrawalProcess
+from global_futures .models import LogoImage, FooterLogo, SocialMediaIcon, ContactInfoFooter, FooterPaymentMethodImage, FooterCopyRightText
 
 class UserBaseTemplateView(TemplateView):
     template_name = 'user_profile/index.html'
@@ -19,7 +20,27 @@ class UserBaseTemplateView(TemplateView):
             'user_change_password_url': self.request.build_absolute_uri('/change-password/'),
             'user_address_url': self.request.build_absolute_uri('/address/')
         })
+        context['logo'] = LogoImage.objects.first()
+        context['footer_logo'] = FooterLogo.objects.first()
+        context['footer_social_media_icon'] = SocialMediaIcon.objects.all()
+        context['contact_info_footer'] = ContactInfoFooter.objects.first()
+        context['payment_method_image'] = FooterPaymentMethodImage.objects.first()
+        context['copy_right'] = FooterCopyRightText.objects.first()
         return context
+
+class ProfileTemplateView(UserBaseTemplateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = User_Profile_Updated(instance=self.request.user)
+        return context
+    
+    def post(self, request, *args, **kwargs):
+        form = User_Profile_Updated(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile updated successfully!')
+            return redirect('user_profile')
+        return render(request, self.template_name, {'form': form})
 
 class ReferralTemplateView(UserBaseTemplateView):
     def get_context_data(self, **kwargs):
@@ -40,9 +61,6 @@ class ReferralTemplateView(UserBaseTemplateView):
         context['page_obj'] = page_obj
         
         return context
-
-class ProfileTemplateView(UserBaseTemplateView):
-    pass
 
 class PassbookTemplateView(UserBaseTemplateView):
     pass

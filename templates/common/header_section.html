@@ -8,32 +8,32 @@
                 <ul class="flex flex-row align-items-center">
                     {% if user.is_authenticated %}
                         <li>
-                            <a class="btn">My Learning</a>
+                            <a class="btn" href="{% url "my_learning" %}">My Learning</a>
                         </li>
                         <li>
-                            <a class="btn">Home Work</a>
+                            <a class="btn" href="{% url "home_work" %}">Home Work</a>
                         </li>
                         <li>
-                            <a class="btn">Blogs</a>
+                            <a class="btn" href="{% url "blog_page" %}">Blogs</a>
                         </li>
                         <li>
-                            <a class="btn">Profile Settings</a>
+                            <a class="btn" href="{% url "user_profile" %}">Profile Settings</a>
                         </li>
                         <li>
-                            <a class="btn">Log Out</a>
+                            <a class="btn" href="{% url "user_logout" %}">Log Out</a>
                         </li>
                     {% else %}
                     <li>
-                        <a>Blogs</a>
+                        <a class="btn" href="{% url "blog_page" %}">Blogs</a>
                     </li>
                     <li>
-                        <a>Sign In</a>
+                        <a class="btn" href="{% url "user_login" %}">Sign In</a>
                     </li>
                     <li>
-                        <a>Subadmin Login</a>
+                        <a class="btn" href="{% url "sub_admin_login" %}">Subadmin Login</a>
                     </li>
                     <li>
-                        <a>Admin Login</a>
+                        <a class="btn" href="/admin">Admin Login</a>
                     </li>
                     {% endif %}
                 </ul>

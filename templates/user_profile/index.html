@@ -2,8 +2,15 @@
 {% load static %}
 {% block title %}My Success E-Learning Platform User{% endblock title %}
 {% block css_link %}
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static "css/common/header_section.css" %}">
     <link rel="stylesheet" href="{% static "css/user_profile/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/common/footer_section.css" %}">
 {% endblock css_link %}
+
+{% block header_section %}
+    {% include "../common/header_section.html" %}
+{% endblock header_section %}
 
 {% block main_content %}
 <section class="user-section">
@@ -37,3 +44,7 @@
     </div>
 </section>
 {% endblock main_content %}
+
+{% block footer_section %}
+    {% include "../common/footer_section.html" %}
+{% endblock footer_section %}

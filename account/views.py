@@ -2,9 +2,10 @@ import random
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, View
 from django.contrib.auth import authenticate, login, logout
-from .forms import User_Register_Form, User_Login_Form, Sub_Admin_Login_Form
+from django.contrib.auth import views as auth_views
+from .forms import User_Register_Form, User_Login_Form, Sub_Admin_Login_Form, ResetPasswordForm
 from global_futures .models import Login_Register_Side_Bar
 from .models import User
 
@@ -30,9 +31,12 @@ class User_Login_TemplateView(TemplateView):
 
             if user:
                 if user.role == 'USER':
-                    login(request, user)
-                    messages.success(request, 'User logged in successfully!')
-                    return redirect('home_page')
+                    if user.is_staff and user.is_banned == False:
+                        login(request, user)
+                        messages.success(request, 'User logged in successfully!')
+                        return redirect('home_page')
+                    else:
+                        messages.warning(request, "Please acitave your account!")
                 else:
                     messages.error(request, 'Access denied: you do not have permission to log in.')
             else:
@@ -97,7 +101,7 @@ class Sub_Admin_Login_TemplateView(TemplateView):
                 if user.role == 'SUB_ADMIN' and user.account_type == account_type:
                     login(request, user)
                     messages.success(request, 'Sub Admin logged in successfully!')
-                    return redirect('sub_admin')
+                    return redirect('all_student')
                 else:
                     messages.error(request, 'Access denied: you do not have permission to log in.')
             else:
@@ -107,3 +111,41 @@ class Sub_Admin_Login_TemplateView(TemplateView):
             messages.error(request, 'Please fill in all fields.')
 
         return render(request, self.template_name, {'form': form, 'side_bar': side_bar})
+
+class User_Logout_View(View):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        messages.success(request, 'Logout successful')
+        return redirect('user_login')
+    
+class Sub_Admin_Logout_View(View):
+
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        messages.success(request, 'Logout successful')
+        return redirect('sub_admin_login')
+    
+class PasswordResetView(auth_views.PasswordResetView):
+    template_name = 'account/forgot_password/password_reset.html'
+    email_template_name = 'account/forgot_password/password_reset_email.html'
+    subject_template_name = 'account/forgot_password/password_reset_subject.txt'
+    success_url = reverse_lazy('password_reset_done')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['side_bar'] = Login_Register_Side_Bar.objects.first()  # Add your sidebar object here
+        return context
+
+class PasswordResetDoneView(auth_views.PasswordResetDoneView):
+    template_name = 'account/forgot_password/password_reset_done.html'
+
+class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
+    form_class = ResetPasswordForm
+    template_name = 'account/forgot_password/password_reset_confirm.html'
+    success_url = reverse_lazy('password_reset_complete')
+
+class PasswordResetCompleteView(auth_views.PasswordResetCompleteView):
+    template_name = 'account/forgot_password/password_reset_complete.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, {'redirect_url': reverse_lazy('home_page')})

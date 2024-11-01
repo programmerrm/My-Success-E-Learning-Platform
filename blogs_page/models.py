@@ -2,28 +2,18 @@ from django.db import models
 from django.core.exceptions import ValidationError
 
 def validate_image_size(image):
-    max_size = 2 * 1024 * 1024
+    max_size = 2 * 1024 * 1024  # 2 MB
     if image.size > max_size:
         raise ValidationError('The image file size must be less than 2 MB')
 
 class Category(models.Model):
-
-    name = models.CharField(
-        max_length=80,
-        null=False,
-        blank=False,
-    )
+    name = models.CharField(max_length=80, unique=True, null=False, blank=False)
 
     def __str__(self):
         return self.name
 
 class Tag(models.Model):
-
-    name = models.CharField(
-        max_length=80,
-        null=False,
-        blank=False,
-    )
+    name = models.CharField(max_length=80, unique=True, null=False, blank=False)
 
     def __str__(self):
         return self.name
@@ -35,7 +25,6 @@ class BlogModel(models.Model):
     image = models.ImageField(
         upload_to='blogs/',
         validators=[validate_image_size],
-        default='images/default-avatar.png',
         blank=False,
         null=False,
     )
@@ -44,6 +33,7 @@ class BlogModel(models.Model):
         max_length=200,
         blank=False,
         null=False,
+        help_text='Enter the title of the blog post.',
     )
 
     short_title = models.CharField(
