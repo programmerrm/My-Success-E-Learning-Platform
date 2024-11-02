@@ -1,3 +1,38 @@
-<div>
+{% load static %}
+<div class="sub-admin-profile-inner flex flex-col w-full">
     <h2>Profile Updated</h2>
+    <form class="form grid" action="{% url "sub_admin_profile" %}" method="POST">
+        <div>
+            <span>Team Leader ID:</span>
+            <span>{{ form.instance.user_id }}</span>
+        </div>
+        <div>
+            <span>Balance:</span>
+            <span>{{ form.instance.balance }}</span>
+        </div>
+        <div>
+            <span>Phone Number:</span>
+            <span>{{ form.instance.number }}</span>
+        </div>
+        <div>
+            <span>Email:</span>
+            <span>{{ form.instance.email }}</span>
+        </div>
+        <div>
+            <span>Account Type:</span>
+            <span>{{ form.instance.account_type }}</span>
+        </div>
+        <div>
+            <span>Role:</span>
+            <span>{{ form.instance.role }}</span>
+        </div>
+
+        {% csrf_token %}
+        {{form.as_div}}
+        
+        <div>
+            <button class="btn" type="submit">Update</button>
+        </div>
+
+    </form>
 </div>

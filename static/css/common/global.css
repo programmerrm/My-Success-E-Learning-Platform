@@ -168,7 +168,7 @@
     --border-color2: rgba(0, 0, 0, 0.09);
     --theme-color: #0000ff;
     /* --gradient-banner-bg: linear-gradient(to right, #5100ff, #00ffff ); */
-    --gradient-banner-bg: linear-gradient(to right, #000080, #00FFFF );
+    --gradient-banner-bg: linear-gradient(to right, #000080, #00FFFF);
     --gradient-overlay-bg: rgba(0, 0, 0, 0) !important;
     --footer-gradient-bg: linear-gradient(180deg, #000000, #000000);
     --body-font-family: 'Jost', sans-serif;

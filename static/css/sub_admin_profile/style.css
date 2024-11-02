@@ -3,26 +3,34 @@
 }
 
 .sub-admin-inner {
-    grid-template-columns: repeat(2, 20% 80%);
+    grid-template-columns: repeat(2, 12% 88%);
     height: 100%;
 }
 
 .sub-admin-side-bar-wrapper {
-    background-color: #7d35b8;
+    background: #000080;
     height: 100%;
+    padding: 20px 20px;
 }
 
 .sub-admin-content {
     height: 75vh;
+    overflow-x: scroll;
+    overflow-x: hidden;
 }
 
 .sub-menu-item {
     column-gap: 10px;
+    cursor: pointer;
+}
+
+.right-arrow {
+    font-size: 20px;
 }
 
 .sub-menu-item-wrapper {
     row-gap: 20px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .header-section {
@@ -31,6 +39,10 @@
 
 .header-inner {
     padding: 0 30px;
+}
+
+.header-inner .btn:hover {
+    border: 2px solid var(--white-color);
 }
 
 .footer-section {
@@ -54,9 +66,11 @@
     height: 100%;
     object-fit: cover;
     border-radius: 100%;
+    cursor: pointer;
 }
 
 .profile-sub-menu {
+    display: none;
     position: absolute;
     top: 70px;
     right: 0;
@@ -118,4 +132,82 @@
 
 .password-change-form div input:focus {
     border: 1px solid var(--theme-color);
+}
+
+.sub-admin-profile-inner {
+    padding: 40px 50px;
+}
+
+.sub-admin-profile-inner .form {
+    gap: 20px;
+    margin-top: 20px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.sub-menu-item {
+    color: var(--white-color);
+}
+
+.sub-menu-item h4 {
+    color: var(--white-color);
+    font-weight: 500;
+}
+
+.menu-item {
+    display: none;
+    margin-top: 10px;
+    margin-left: 25px;
+    row-gap: 10px;
+}
+
+.menu-item li a {
+    font-size: 16px;
+    color: var(--white-color);
+}
+
+.all-pending-student thead tr {
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+}
+
+.all-pending-student tbody tr {
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+    text-align: center;
+}
+.all-pending-student tbody tr td {
+    margin-top: 20px;
+}
+
+.pending-student {
+    padding: 20px 50px;
+}
+
+.pending-student .form {
+    margin-top: 20px;
+    row-gap: 10px;
+}
+
+.pending-student .form input {
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: var(--body-font-family);
+    background-color: var(--white-color);
+    color: var(--gray-color);
+    border: 1px solid var(--disable-color);
+}
+
+.pending-student .form input:focus {
+    border: 1px solid var(--theme-color);
+}
+.all-pending-student {
+    margin-top: 20px;
+}
+.all-pending-student tbody tr td img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 2px;
 }

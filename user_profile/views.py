@@ -37,8 +37,8 @@ class ProfileTemplateView(UserBaseTemplateView):
     def post(self, request, *args, **kwargs):
         form = User_Profile_Updated(request.POST, instance=request.user)
         if form.is_valid():
-            form.save()
             messages.success(request, 'Profile updated successfully!')
+            form.save()
             return redirect('user_profile')
         return render(request, self.template_name, {'form': form})
 
