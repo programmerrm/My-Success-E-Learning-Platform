@@ -1,3 +1,60 @@
+{% load static %}
 <div class="flex flex-col w-full">
     <h2>All Students</h2>
+    <form class="form flex flex-col w-full" action="{% url 'all_student' %}" method="GET">
+        <h4>Search Student</h4>
+        <div class="flex flex-col">
+            <input type="number" name="number" id="number" placeholder="WhatsApp Number">
+        </div>
+        <div class="flex flex-col">
+            <input type="number" name="user_id" id="user_id" placeholder="Student ID">
+        </div>
+        <div class="flex flex-col">
+            <button class="btn" type="submit">Search</button>
+        </div>
+    </form>
+    <table class="all-pending-student flex flex-col w-full">
+        <thead class="flex flex-col w-full">
+            <tr class="grid">
+                <th>No</th>
+                <th>Image</th>
+                <th>Details</th>
+                <th>Reference</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody class="flex flex-col w-full">
+            {% for user in page_obj %}
+                <tr class="grid">
+                    <td>{{ forloop.counter }}</td>
+                    <td><img src="{{ user.image.url }}" alt="Image"></td>
+                    <td>
+                        <span>Student Id: {{ user.user_id }}</span>
+                        <h4>Name: {{ user.first_name }} {{ user.last_name }}</h4>
+                        <span>Email: {{ user.email }}</span>
+                        <span>Number: {{ user.number }}</span>
+                        <span>Joined on: {{ user.date_joined }}</span>
+                    </td>
+                    <td>
+                        <span>ID: {{ user.referred_by.user_id }}</span>
+                        <h4>Name: {{ user.referred_by.first_name }} {{ user.referred_by.last_name }}</h4>
+                    </td>
+                    <td><span>Inactive</span></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+            <span class="current">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
 </div>

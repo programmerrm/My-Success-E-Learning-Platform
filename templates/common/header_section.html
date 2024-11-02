@@ -4,7 +4,10 @@
             <a class="logo" href="{% url "home_page" %}">
                 <img src="{{ logo.image.url }}" alt="logo" loading="lazy" decoding="async">
             </a>
-            <nav class="flex flex-col flex-wrap nav-bar-wrap desk">
+            <nav class="flex flex-col flex-wrap nav-bar-wrap">
+                <button class="close-menu mobi" type="button">
+                    <i class="ri-close-fill"></i>
+                </button>
                 <ul class="flex flex-row align-items-center">
                     {% if user.is_authenticated %}
                         <li>

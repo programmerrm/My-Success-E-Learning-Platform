@@ -23,6 +23,27 @@ class SubAdminBaseTemplateView(TemplateView):
         context['copy_right'] = FooterCopyRightText.objects.first()
         return context
 
+class AllStudent(SubAdminBaseTemplateView):
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        search_number = self.request.GET.get('number', None)
+        search_user_id = self.request.GET.get('user_id', None)
+        
+        users = User.objects.all()
+        
+        if search_number:
+            users = users.filter(number=search_number)
+        elif search_user_id:
+            users = users.filter(user_id=search_user_id)
+
+        paginator = Paginator(users, 5)
+        page_number = self.request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        
+        context['page_obj'] = page_obj
+        return context
+
 class PendingStudent(SubAdminBaseTemplateView):
 
     def get_context_data(self, **kwargs):
@@ -33,8 +54,8 @@ class PendingStudent(SubAdminBaseTemplateView):
         users = User.objects.filter(is_staff=False)
         
         if search_number:
-            users = users.filter(phone=search_number)
-        if search_user_id:
+            users = users.filter(number=search_number)
+        elif search_user_id:
             users = users.filter(user_id=search_user_id)
 
         paginator = Paginator(users, 5)
@@ -43,9 +64,6 @@ class PendingStudent(SubAdminBaseTemplateView):
         
         context['page_obj'] = page_obj
         return context
-
-class AllStudent(SubAdminBaseTemplateView):
-    pass
 
 class UpdatedProfile(SubAdminBaseTemplateView):
     def get_context_data(self, **kwargs):
