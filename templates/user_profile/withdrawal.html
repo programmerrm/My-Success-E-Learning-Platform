@@ -1,12 +1,21 @@
 <div class="user_withdrawal-wrapper flex flex-col w-full">
-    <h2>Withdrawal</h2>
-    <h4>My balance: {{ user.balance }}</h4>
+    <div class="flex flex-row align-items-center justify-space-between w-full">
+        <div>
+            <h2>Withdrawal</h2>
+            <h4>My balance: {{ user.balance }}</h4>
+        </div>
+        <div class="withdrawal-alert">
+            <p role="alert">Once the withdrawal expansion is done, it will not be possible to reduce the withdrawal within the next 7 days.</p>
+        </div>              
+    </div>
     
-    <form class="user_withdrawal-form flex flex-col" method="POST" action="{% url 'user_withdrawal' %}">
-        {% csrf_token %}
-        {{ form.as_div }}
-        <button class="btn" type="submit">Submit Withdrawal Request</button>
-    </form>
+    {% if can_withdraw %}
+        <form class="user_withdrawal-form flex flex-col" method="POST" action="{% url 'user_withdrawal' %}">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <button class="btn" type="submit">Submit Withdrawal Request</button>
+        </form>
+    {% endif %}
     
     {% if withdrawals %}
     <div class="user_withdrawal-list flex flex-col w-full">
@@ -19,7 +28,6 @@
                     <th>Number</th>
                     <th>Status</th>
                     <th>Transaction ID</th>
-                    <th>Date</th>
                 </tr>
             </thead>
             <tbody class="flex flex-col w-full">
@@ -30,7 +38,6 @@
                         <td>{{ withdrawal.number }}</td>
                         <td>{{ withdrawal.get_status_display }}</td>
                         <td>{{ withdrawal.transaction_id }}</td>
-                        <td>{{ withdrawal.created_at }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

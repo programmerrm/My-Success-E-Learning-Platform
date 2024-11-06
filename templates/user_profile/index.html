@@ -13,6 +13,7 @@
 {% endblock header_section %}
 
 {% block main_content %}
+
 <section class="user-section">
     <div class="common-wrap">
         <div class="user-section-top-bar flex flex-col align-items-center justify-content-center">
@@ -20,12 +21,12 @@
             <div class="flex flex-row align-items-center">
                 <a href="{% url 'home_page' %}">Home</a>
                 <span>/</span>
-                <i>{{ request.path }}</i>
+                <i>{{ new_path }}</i>
             </div>
-        </div>
-        <div class="user-section-main grid">
+        </div>        
+        <div class="grid user-section-main">
             {% include "./side_bar.html" %}
-            <div class="user-main-content flex flex-col">
+            <div class="user-main-content flex flex-col w-full">
                 {% if request.resolver_match.url_name == 'user_profile' %}
                     {% include "./profile.html" %}
                 {% elif request.resolver_match.url_name == 'user_referral' %}
@@ -43,6 +44,7 @@
         </div>
     </div>
 </section>
+
 {% endblock main_content %}
 
 {% block footer_section %}

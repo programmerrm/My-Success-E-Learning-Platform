@@ -3,7 +3,7 @@
     background: var(--gradient-banner-bg);
 }
 .user-section {
-    padding: 100px 0;
+    padding: 50px 0;
     background-color: var(--page-bg);
 }
 
@@ -17,18 +17,36 @@
     font-weight: 500;
 }
 
-.user-section-main {
-    grid-template-columns: repeat(2, 25% 75%);
-    background-color: var(--white-color);
-    border-radius: 10px;
+.user-section-top-bar div {
+    column-gap: 8px;
 }
 
-.side-bar-wrapper {
+.user-section-top-bar div a, i, span {
+    color: var(--gray-color);
+    transition: all ease 0.3s;
+    font-size: 17px;
+}
+
+.user-section-top-bar div a:hover {
+    color: var(--black-color);
+}
+
+.user-section-main {
+    grid-template-columns: repeat(2, 25% 75%);
+}
+
+.side-bar-inner {
+    background-color: var(--white-color);
     border-right: 1px solid #F7F5FF;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .user-main-content {
     padding: 50px 50px;
+    background-color: var(--white-color);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .user-name-bio {
@@ -65,10 +83,11 @@
 
 .user-settings ul li a {
     padding: 12px 0 12px 50px;
+    color: var(--black-color);
 }
 
 .user-change-password-wrapper {
-    width: 50%;
+    width: 100%;
 }
 
 .user-change-password-wrapper h2 {
@@ -155,7 +174,9 @@
 }
 
 
-
+.user_withdrawal-wrapper {
+    row-gap: 30px;
+}
 
 .user_withdrawal-wrapper h2 {
     font-size: 1.5rem;
@@ -209,35 +230,80 @@
     font-weight: 500;
 }
 
+.user_withdrawal-list table {
+    border-top: 1px solid var(--gray-color);
+    border-left: 1px solid var(--gray-color);
+    border-right: 1px solid var(--gray-color);
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.user_withdrawal-list table thead {
+    border-bottom: 1px solid var(--gray-color);
+}
+
+.user_withdrawal-list table thead th {
+    border-right: 1px solid var(--gray-color);
+}
+
+.pagination {
+    margin-top: 10px;
+}
+
 .no-withdrawal-list {
     font-size: 1rem;
     font-weight: 500;
 }
 
 .withdrawal-list-top {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .withdrawal-list-bottom {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .withdrawal-list-bottom td {
     text-align: center;
+    padding: 10px 5px;
+}
+.withdrawal-alert {
+    text-align: center;
+    background-color: #198754;
+    color: var(--white-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    max-width: 55%;
+}
+.withdrawal-alert p {
+    font-size: 17px;
 }
 
 .user_withdrawal-list table {
-    row-gap: 20px;
-    padding: 20px 0;
+
 }
 
 .user_withdrawal-list table thead tr th {
     font-size: 1rem;
     font-weight: 500;
+    padding: 10px 0;
+}
+
+.user_withdrawal-list table thead tr th:nth-child(5n+5) {
+    border: none;
 }
 
 .user_withdrawal-list table tbody {
-    row-gap: 10px;
+    
+}
+
+.withdrawal-list-bottom td {
+    border-right: 1px solid var(--gray-color);
+    border-bottom: 1px solid var(--gray-color);
+}
+
+.withdrawal-list-bottom td:nth-child(5n+5) {
+    border-right: 0px;
 }
 
 .step-links {
@@ -298,8 +364,6 @@
     margin-top: 20px;
     row-gap: 20px;
 }
-
-
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
     .user-section-main {
