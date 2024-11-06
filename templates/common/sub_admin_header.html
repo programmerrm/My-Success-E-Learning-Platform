@@ -3,7 +3,11 @@
     <div class="header-inner flex flex-row justify-space-between align-items-center w-full">
         <a class="btn" href="{% url "home_page" %}">Visit Site</a>
         <div class="profile-image">
-            <img src="{{ user.image.url }}" alt="sub-admin">
+            {% if user.image %}
+                <img src="{{ user.image.url }}" alt="sub-admin">
+            {% else %}
+                <img src="{% static 'images/default-avatar.png' %}" alt="user">
+            {% endif %}
             <div class="profile-sub-menu">
                 <ul class="flex flex-col">
                     <li class="flex flex-row align-items-center">

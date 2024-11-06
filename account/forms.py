@@ -1,10 +1,50 @@
+import random
 from django import forms
 from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
 from decimal import Decimal
 
+def validate_image_size(image):
+    max_size = 2 * 1024 * 1024
+    if image.size > max_size:
+        raise ValidationError('The image file size must be less than 2 MB')
+
 User = get_user_model()
+
+class TrainerCreateForm(forms.ModelForm):
+    COUNTRY_CODE = [
+        ('BD', '+88'),
+        ('IND', '+91'),
+    ]
+
+    class Meta:
+        model = User
+        fields = ['image', 'email', 'country_code', 'number', 'password', 'first_name', 'last_name', 'address', 'city', 'state', 'country', 'bio']
+
+    def __init__(self, *args, **kwargs):
+        super(TrainerCreateForm, self).__init__(*args, **kwargs)
+        self.fields['image'].validators = [validate_image_size]
+        self.fields['country_code'].choices = self.COUNTRY_CODE
+        self.fields['password'].required = True
+
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        validate_password(password)
+        return password
+
+    def save(self, commit=True):
+        user = super(TrainerCreateForm, self).save(commit=False)
+        user.set_password(self.cleaned_data['password'])
+        user.user_id = random.randint(100000, 999999)
+        user.role = 'SUB_ADMIN'
+        user.account_type = 'TR'
+        user.is_staff = True
+        user.is_active = True
+        if commit:
+            user.save()
+        return user
 
 class Sub_Admin_Login_Form(forms.Form):
 

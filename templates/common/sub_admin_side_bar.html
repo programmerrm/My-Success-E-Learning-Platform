@@ -7,11 +7,23 @@
     <div class="sub-menu-item-wrapper flex flex-col w-full">
         <div class="sub-menu-item flex flex-row align-items-center w-full">
             <i class="ri-graduation-cap-fill"></i>
-            <h4>Manage Course</h4>
+            <h4>Manage Info</h4>
             <i class="ri-arrow-right-s-line right-arrow"></i>
             <div class="menu-item flex flex-col w-full">
+                {% if user.is_authenticated and user.account_type == "TL" %}
+                    <li>
+                        <a href="{% url 'trainer_create' %}">Trainer Info</a>
+                    </li>
+                {% elif user.is_authenticated and user.account_type == "STL" %}
+                    <li>
+                        <a href="#">Team Leader Info</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'trainer_create' %}">Trainer Info</a>
+                    </li>
+                {% endif %}
                 <li>
-                    <a>Enroll In Course</a>
+                    <a href="{% url "member_info" %}">Member Info</a>
                 </li>
             </div>
         </div>

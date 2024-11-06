@@ -1,4 +1,4 @@
-<section class="achievement-section">
+<section class="{% if user.is_authenticated %}achievement-top{% else %}achievement-section{% endif %}">
     <div class="common-wrap">
         <div class="achievement-inner grid w-full">
             {% if achievement %}

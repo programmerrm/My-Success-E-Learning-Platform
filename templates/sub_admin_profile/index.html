@@ -19,6 +19,10 @@
                 <section class="sub-admin-content">
                     {% if request.resolver_match.url_name == 'all_student' %}
                         {% include "sub_admin_profile/all_student.html" %}
+                    {% elif request.resolver_match.url_name == 'trainer_create' %}
+                        {% include "sub_admin_profile/trainer_create.html" %}
+                    {% elif request.resolver_match.url_name == 'member_info' %}
+                        {% include "sub_admin_profile/member_info.html" %}
                     {% elif request.resolver_match.url_name == 'pending_student' %}
                         {% include "sub_admin_profile/pending_student.html" %}
                     {% elif request.resolver_match.url_name == 'sub_admin_profile' %}

@@ -259,6 +259,10 @@
 
 .achievement-section {
     padding: 50px 0;
+    margin-top: 130px;
+}
+.achievement-top {
+    padding: 50px 0;
 }
 
 .achievement-inner {

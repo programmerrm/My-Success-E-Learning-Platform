@@ -3,7 +3,7 @@
     <h2>Profile Updated</h2>
     <form class="form grid" action="{% url "sub_admin_profile" %}" method="POST">
         <div>
-            <span>Team Leader ID:</span>
+            <span>{{ form.instance.account_type }} ID:</span>
             <span>{{ form.instance.user_id }}</span>
         </div>
         <div>

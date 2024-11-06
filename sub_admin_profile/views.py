@@ -5,6 +5,7 @@ from global_futures.models import LogoImage, FooterCopyRightText
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from .forms import SubAdminProfile
+from account .forms import TrainerCreateForm
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -22,6 +23,23 @@ class SubAdminBaseTemplateView(TemplateView):
         context['logo'] = LogoImage.objects.first()
         context['copy_right'] = FooterCopyRightText.objects.first()
         return context
+
+class TrainerCreate(SubAdminBaseTemplateView):
+    def get(self, request, *args, **kwargs):
+        form = TrainerCreateForm()
+        context = self.get_context_data(**kwargs)
+        context['form'] = form
+        return self.render_to_response(context)
+
+    def post(self, request, *args, **kwargs):
+        form = TrainerCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Trainer Account create successfully!")
+            return redirect('trainer_create')
+        context = self.get_context_data(**kwargs)
+        context['form'] = form
+        return self.render_to_response(context)
 
 class AllStudent(SubAdminBaseTemplateView):
     
@@ -98,4 +116,8 @@ class Withdrawal(SubAdminBaseTemplateView):
     pass
 
 class Passbook(SubAdminBaseTemplateView):
+    pass
+
+
+class MemberInfo(SubAdminBaseTemplateView):
     pass
