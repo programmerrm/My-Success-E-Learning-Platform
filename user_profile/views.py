@@ -42,10 +42,10 @@ class ProfileTemplateView(UserBaseTemplateView):
         return context
     
     def post(self, request, *args, **kwargs):
-        form = User_Profile_Updated(request.POST, instance=request.user)
+        form = User_Profile_Updated(request.POST, request.FILES, instance=request.user)  # Added request.FILES
         if form.is_valid():
-            messages.success(request, 'Profile updated successfully!')
             form.save()
+            messages.success(request, 'Profile updated successfully!')
             return redirect('user_profile')
         return render(request, self.template_name, {'form': form})
 

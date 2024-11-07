@@ -9,7 +9,7 @@ class User_Profile_Updated(UserChangeForm):
     password = None
     class Meta:
         model = User
-        fields = ['image', 'user_id', 'balance', 'email', 'first_name', 'last_name', 'address', 'city', 'state', 'country', 'bio']
+        fields = ['image', 'user_id', 'balance', 'email', 'number', 'first_name', 'last_name', 'address', 'city', 'state', 'country', 'bio']
 
     def __init__(self, *args, **kwargs):
         super(User_Profile_Updated, self).__init__(*args, **kwargs)
@@ -17,6 +17,8 @@ class User_Profile_Updated(UserChangeForm):
         self.fields['user_id'].widget.attrs['readonly'] = True
         self.fields['balance'].widget.attrs['readonly'] = True
         self.fields['email'].widget.attrs['readonly'] = True
+        self.fields['number'].widget.attrs['readonly'] = True
+
 
 class WithdrawalRequestForm(forms.ModelForm):
     
