@@ -45,6 +45,39 @@ class TrainerCreateForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+    
+class TeamLeaderCreateForm(forms.ModelForm):
+    COUNTRY_CODE = [
+        ('BD', '+88'),
+        ('IND', '+91'),
+    ]
+
+    class Meta:
+        model = User
+        fields = ['image', 'email', 'country_code', 'number', 'password', 'first_name', 'last_name', 'address', 'city', 'state', 'country', 'bio']
+
+    def __init__(self, *args, **kwargs):
+        super(TeamLeaderCreateForm, self).__init__(*args, **kwargs)
+        self.fields['image'].validators = [validate_image_size]
+        self.fields['country_code'].choices = self.COUNTRY_CODE
+        self.fields['password'].required = True
+
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        validate_password(password)
+        return password
+
+    def save(self, commit=True):
+        user = super(TeamLeaderCreateForm, self).save(commit=False)
+        user.set_password(self.cleaned_data['password'])
+        user.user_id = random.randint(100000, 999999)
+        user.role = 'SUB_ADMIN'
+        user.account_type = 'TL'
+        user.is_staff = True
+        user.is_active = True
+        if commit:
+            user.save()
+        return user
 
 class Sub_Admin_Login_Form(forms.Form):
 
