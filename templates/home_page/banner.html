@@ -1,0 +1,24 @@
+<section class="banner-section">
+    <div class="common-wrap">
+        <div class="grid w-full banner-inner">
+            <div class="flex flex-col justify-content-center w-full banner-content">
+                <div class="flex flex-col w-full banner-short_title">
+                    <p><span>learning and</span> <span>earning platform</span></p>
+                </div>
+                {% if not user.is_authenticated %}
+                    <div class="flex flex-row align-items-center w-full login-btn">
+                        <a class="btn" href="{% url "user_login" %}">Login</a>
+                        <a class="btn" href="{% url "user_register" %}">Register</a>
+                    </div>
+                {% endif %}
+                <div class="flex flex-col w-full banner-title">
+                    <h1>My Success</br> <span class="text-ani">E- <b> <span class="banner-text-animation"></span></b></span> Platform</h1>
+                    <p>{{ banner.description }}</p>
+                </div>
+            </div>
+            <div class="flex flex-col w-full">
+                <img src="{{ banner.image.url }}" alt="banner" loading="lazy" decoding="async">
+            </div>
+        </div>
+    </div>
+</section>

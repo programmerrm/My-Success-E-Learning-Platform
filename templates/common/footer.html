@@ -1,0 +1,95 @@
+<footer class="footer-section">
+    <div class="footer-inner flex flex-col w-full">
+        <div class="footer-top-wrapper w-full">
+            <div class="common-wrap">
+                <div class="footer-tor-inner grid">
+                    <div class="flex flex-col w-full footer-logo-wrapper">
+                        <a class="logo" href="{% url "home_page" %}">
+                            <img src="{{ logo.logo.url }}" alt="logo" loading="lazy" decoding="async">
+                        </a>
+                        <p>{{ footer_description.short_description }}</p>
+                        <div class="flex flex-row align-items-center w-full footer-icon-wrapper">
+                            {% for icon in social_media_icon %}
+                                <a href="{{ icon.url }}" target="_blank">
+                                    <img src="{{ icon.icon.url }}" alt="icon" loading="lazy" decoding="async">
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col w-full conpany-wrapper">
+                        <h4>Company</h4>
+                        <div class="flex flex-col w-full conpany-wrapper-item">
+                            <ul class="flex flex-col w-full">
+                                <li>
+                                    <a href="">About</a>
+                                </li>
+                                <li>
+                                    <a href="">FAQ</a>
+                                </li>
+                                <li>
+                                    <a href="">Blogs</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex flex-col w-full support-wrapper">
+                        <h4>Support</h4>
+                        <div class="flex flex-col w-full support-wrapper-item">
+                            <ul class="flex flex-col w-full">
+                                <li>
+                                    <a href="">Contact</a>
+                                </li>
+                                <li>
+                                    <a href="">Support</a>
+                                </li>
+                                <li>
+                                    <a href="">Courses</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex flex-col w-full contact_info_wrapper">
+                        <h4>Contact Info</h4>
+
+                        <div class="flex flex-col w-full contact_info_item">
+                            <div class="flex flex-row align-items-center">
+                                <i class="ri-map-pin-line"></i>
+                                <span>{{ contact_info_footer.address }}</span>
+                            </div>
+                            <div class="flex flex-row align-items-center">
+                                <i class="ri-phone-fill"></i>
+                                <a href="tel:{{ contact_info_footer.phone_number }}">{{ contact_info_footer.phone_number }}</a>
+                            </div>
+                            <div class="flex flex-row align-items-center"> 
+                                <i class="ri-mail-line"></i>
+                                <a href="mailto:{{ contact_info_footer.email }}">{{ contact_info_footer.email }}</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-wrapper w-full">
+            <div class="common-wrap">
+                <div class="grid footer-bottom-inner">
+                    <img src="{{ payment_method_image.image.url }}" alt="payment_method_image" loading="lazy" decoding="async">
+                    <p>{{ copy_right.text }}</p>
+                    <div class="flex flex-col align-items-end footer-bottom-link">
+                        <ul class="flex flex-row align-items-center">
+                            <li>
+                                <a>Instructor</a>
+                            </li>
+                            <li>
+                                <a>Become Instructor</a>
+                            </li>
+                            <li>
+                                <a>Verify Certificate</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

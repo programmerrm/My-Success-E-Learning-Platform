@@ -1,0 +1,30 @@
+<div class="side-bar-wrapper flex flex-col w-full">
+    <div class="flex flex-col w-full side-bar-inner">
+        <div class="user-name-bio flex flex-col">
+            <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+            <p>You're a Student</p>
+        </div>
+        <div class="user-settings flex flex-col">
+            <ul class="flex flex-col">
+                <li class="{% if request.resolver_match.url_name == 'user_profile' %}active{% endif %}">
+                    <a href="{% url 'user_profile' %}">Profile</a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'user_referral' %}active{% endif %}">
+                    <a href="{% url 'user_referral' %}">Reference</a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'user_passbook' %}active{% endif %}">
+                    <a href="{% url 'user_passbook' %}">My Passbook</a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'user_withdrawal' %}active{% endif %}">
+                    <a href="{% url 'user_withdrawal' %}">Withdrawals</a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'user_address' %}active{% endif %}">
+                    <a href="{% url 'user_address' %}">Address & Location</a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'user_change_password' %}active{% endif %}">
+                    <a href="{% url 'user_change_password' %}">Change Password</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+{% load static %}
+<div class="student flex flex-col w-full">
+    <h2>Pending Students</h2>
+
+    <form class="flex flex-col w-full student-search-form" action="{% url 'pending_student' %}" method="GET">
+        <h4>Search Student</h4>
+        <div class="flex flex-col">
+            <input type="number" name="number" id="number" placeholder="WhatsApp Number">
+        </div>
+        <div class="flex flex-col">
+            <input type="number" name="user_id" id="user_id" placeholder="Student ID">
+        </div>
+        <div class="flex flex-col">
+            <button class="btn" type="submit">Search</button>
+        </div>
+    </form>
+
+    <table class="all-student flex flex-col w-full">
+        <thead class="flex flex-col w-full">
+            <tr class="grid">
+                <th>No</th>
+                <th>Image</th>
+                <th>Details</th>
+                <th>Reference</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody class="flex flex-col w-full">
+            {% for user in page_obj %}
+                <tr class="grid">
+                    <td>{{ forloop.counter }}</td>
+                    <td>
+                        {% if user.is_authenticated and user.image. %}
+                            <img src="{{ user.image.url }}" alt="user" loading="lazy" decoding="async">
+                        {% else %}
+                            <img src="{% static "images/default-avatar.png" %}" alt="user" loading="lazy" decoding="async">
+                        {% endif %}
+                    </td>
+                    <td>
+                        <span>Student Id: {{ user.user_id }}</span>
+                        <h4>Name: {{ user.first_name }} {{ user.last_name }}</h4>
+                        <span>Email: {{ user.email }}</span>
+                        <span>Number: {{ user.number }}</span>
+                        <span>Joined on: {{ user.date_joined }}</span>
+                    </td>
+                    <td>
+                        {% if user.referraled_by %}
+                            <span>ID: {{ user.referraled_by.user_id }}</span>
+                            <h4>Name: {{ user.referraled_by.first_name }} {{ user.referraled_by.last_name }}</h4>
+                            <span>Email: {{ user.referraled_by.email }}</span>
+                            <span>Number: {{ user.referraled_by.number }}</span>
+                        {% else %}
+                            <span>No Referrer</span>
+                        {% endif %}
+                    </td>   
+                    <td><span>Inactive</span></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a class="btn" href="?page={{ page_obj.previous_page_number }}">Previous &laquo; </a>
+            {% endif %}
+            <span class="current">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+            {% if page_obj.has_next %}
+                <a class="btn" href="?page={{ page_obj.next_page_number }}">Next &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>

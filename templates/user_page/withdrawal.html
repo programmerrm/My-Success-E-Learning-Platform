@@ -1,0 +1,71 @@
+<div class="user_withdrawal-wrapper flex flex-col w-full">
+    <div class="flex flex-row align-items-center justify-space-between w-full">
+        <div>
+            <h2>Withdrawal</h2>
+            <h4>My balance: {{ user.balance }}</h4>
+        </div>
+        <div class="withdrawal-alert">
+            <p role="alert">Once the withdrawal expansion is done, it will not be possible to reduce the withdrawal within the next 7 days.</p>
+        </div>              
+    </div>
+    
+    {% if can_withdraw and user.balance == 50 %}
+        <form class="user_withdrawal-form flex flex-col" method="POST" action="{% url 'user_withdrawal' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn" type="submit">Submit Withdrawal Request</button>
+        </form>
+    {% endif %}
+    
+    {% if withdrawals %}
+    <div class="user_withdrawal-list flex flex-col w-full">
+        <h3>Withdrawal List</h3>
+        <table class="flex flex-col w-full">
+            <thead class="flex flex-col w-full">
+                <tr class="grid withdrawal-list-top">
+                    <th>Method</th>
+                    <th>Amount</th>
+                    <th>Number</th>
+                    <th>Status</th>
+                    <th>Transaction ID</th>
+                </tr>
+            </thead>
+            <tbody class="flex flex-col w-full">
+                {% for withdrawal in withdrawals %}
+                    <tr class="grid withdrawal-list-bottom">
+                        <td>{{ withdrawal.method.name }}</td>
+                        <td>{{ withdrawal.amount }}</td>
+                        <td>{{ withdrawal.number }}</td>
+                        <td>{{ withdrawal.get_status_display }}</td>
+                        <td>{{ withdrawal.transaction_id }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Pagination Controls -->
+        <div class="pagination">
+            <span class="step-links flex flex-col">
+
+                <span class="current">
+                    Page {{ withdrawals.number }} of {{ withdrawals.paginator.num_pages }}.
+                </span>
+
+                {% if withdrawals.has_previous %}
+                    <div class="flex flex-row withdrawals-has-previous">
+                        <a class="btn" href="?page={{ withdrawals.previous_page_number }}">Previous &laquo;</a>
+                    </div>
+                {% endif %}
+
+                {% if withdrawals.has_next %}
+                    <div class="flex flex-row withdrawals-has-next">
+                        <a class="btn" href="?page={{ withdrawals.next_page_number }}">Next &raquo;</a>
+                    </div>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+    {% else %}
+        <div class="no-withdrawal-list">No withdrawal requests made.</div>
+    {% endif %}
+</div>

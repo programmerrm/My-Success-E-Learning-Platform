@@ -1,0 +1,67 @@
+.nav-wrap ul {
+    column-gap: 25px;
+}
+
+.nav-wrap ul li a {
+    padding: 12px 20px;
+    border: none;
+}
+
+.nav-wrap ul li a:hover {
+    border: none !important;
+}
+
+@media only screen and (max-width: 499px) {
+    .nav-wrap {
+        position: fixed;
+        top: 0;
+        left: auto;
+        right: -110%;
+        width: 65%;
+        padding-bottom: 50px;
+        z-index: 9999;
+        background: var(--footer-gradient-bg);
+        transition: transform 0.3s ease;
+        border-bottom-left-radius: 5px;
+    }
+
+    .nav-wrap ul {
+        flex-flow: column wrap;
+        margin-top: 80px;
+        row-gap: 10px;
+        padding: 0 20px;
+    }
+
+    .nav-wrap ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu-open-btn {
+        background-color: transparent;
+        border: none;
+        outline: none;
+    }
+
+    .menu-open-btn i {
+        font-size: 2.2rem;
+        color: var(--white-color);
+    }
+
+    .menu-close-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background-color: var(--white-color);
+        border: none;
+        outline: none;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+    }
+
+    .menu-close-btn i {
+        font-size: 1.5rem;
+        color: var(--black-color);
+    }
+}

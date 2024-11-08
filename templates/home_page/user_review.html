@@ -1,0 +1,37 @@
+{% load static %}
+<section class="review-section">
+    <div class="common-wrap">
+        <div class="review-inner">
+            <div class="flex flex-col align-items-center justify-content-center w-full review-top-bar">
+                <img src="{% static "images/customers-say-heading-img.png" %}" alt="customers-say" loading="lazy" decoding="async" >
+                <h2>What Our Valuable Customers Say.</h2>
+            </div>
+            <div class="review-slider-wrapper">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                      {% if reviews %}
+                        {% for review in reviews  %}
+                            <div class="swiper-slide slider-item">
+                                <div class="flex flex-col align-items-center justify-content-center w-full review-wrapper-user">
+                                    {% if review.user.image %}
+                                        <img src="{{ review.user.image.url }}" alt="user" loading="lazy" decoding="async">
+                                    {% else %}
+                                        <img src="{% static "images/default-avatar.png" %}" alt="user" loading="lazy" decoding="async">
+                                    {% endif %}
+                                    <h4>{{ review.user.first_name }} {{ review.user.last_name }}</h4>
+                                </div>
+                                <div class="flex flex-col align-items-center justify-content-center w-full review-description">
+                                    <h2>{{ review.title }}</h2>
+                                    <p>{{ review.description }}</p>
+                                    <div class="stars" data-stars="{{ review.star }}"></div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+                    <div class="swiper-pagination"></div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</section>

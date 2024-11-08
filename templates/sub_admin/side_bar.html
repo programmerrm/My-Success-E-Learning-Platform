@@ -1,0 +1,85 @@
+<div class="sub-admin-side-bar-wrapper flex flex-col w-full">
+    <div class="flex flex-col w-full">
+        <a class="logo" href="{% url "all_student" %}">
+            <img src="{{ logo.logo.url }}">
+        </a>
+    </div>
+    <div class="sub-menu-item-wrapper flex flex-col w-full">
+        <div class="sub-menu-item flex flex-row align-items-center w-full">
+            <i class="ri-graduation-cap-fill"></i>
+            <h4>Manage Info</h4>
+            <i class="ri-arrow-right-s-line right-arrow"></i>
+            <div class="menu-item flex flex-col w-full">
+
+                {% if user.is_authenticated and user.account_type == "senior_manager" %}
+                    <li>
+                        <a href="{% url "all_sub_admin_info" %}">All Sub Admin Info</a>
+                    </li>
+
+                {% elif user.is_authenticated and user.account_type == "manager" %}
+                    <li>
+                        <a href="{% url "all_sub_admin_info" %}">All Sub Admin Info</a>
+                    </li>
+
+                {% elif user.is_authenticated and user.account_type == "senior_team_leader" %}
+                    <li>
+                        <a href="{% url "team_leader_create" %}">Team Leader Info</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'trainer_create' %}">Trainer Info</a>
+                    </li>
+
+                {% elif user.is_authenticated and user.account_type == "team_leader" %}
+                    <li>
+                        <a href="{% url 'trainer_create' %}">Trainer Info</a>
+                    </li>
+
+                {% endif %}
+
+                <li>
+                    <a href="{% url "member_info" %}">Member Info</a>
+                </li>
+
+            </div>
+        </div>
+        <div class="sub-menu-item flex flex-row align-items-center w-full">
+            <i class="ri-graduation-cap-line"></i>
+            <h4>Manage Student</h4>
+            <i class="ri-arrow-right-s-line right-arrow"></i>
+            <div class="menu-item flex flex-col w-full">
+                <li>
+                    <a href="{% url "all_student" %}">All Student</a>
+                </li>
+                <li>
+                    <a href="{% url "pending_student" %}">Pending Student</a>
+                </li>
+            </div>
+        </div>
+        <div class="sub-menu-item flex flex-row align-items-center w-full">
+            <i class="ri-settings-2-line"></i>
+            <h4>Account Settings</h4>
+            <i class="ri-arrow-right-s-line right-arrow"></i>
+            <div class="menu-item flex flex-col w-full">
+                <li>
+                    <a href="{% url "sub_admin_profile" %}">Profile</a>
+                </li>
+                <li>
+                    <a href="{% url "change_password" %}">Change Password</a>
+                </li>
+            </div>
+        </div>
+        <div class="sub-menu-item flex flex-row align-items-center w-full">
+            <i class="ri-graduation-cap-fill"></i>
+            <h4>Extras</h4>
+            <i class="ri-arrow-right-s-line right-arrow"></i>
+            <div class="menu-item flex flex-col w-full">
+                <li>
+                    <a href="{% url "sub_admin_passbook" %}">Passbook</a>
+                </li>
+                <li>
+                    <a href="{% url "sub_admin_withdrawal" %}">Withdrawal</a>
+                </li>
+            </div>
+        </div>
+    </div>
+</div>

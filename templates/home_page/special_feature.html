@@ -1,0 +1,20 @@
+{% load static %}
+<section class="special-feature-section">
+    <div class="common-wrap">
+        <div class="grid special-feature-inner">
+            {% if special_feature %}
+                {% for item in special_feature %}
+                    <div class="flex flex-row justify-space-between align-items-center w-full special-feature-item">
+                        <div class="flex flex-col special-feature-item-icon">
+                            <img src="{{ item.icon.url }}" alt="{{ item.title }}" loading="lazy" decoding="async">
+                        </div>
+                        <div class="flex flex-col special-feature-item-content">
+                            <h4>{{ item.title }}</h4>
+                            <p>{{ item.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %} 
+        </div>
+    </div>
+</section>

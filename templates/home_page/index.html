@@ -1,0 +1,45 @@
+{% extends "../common/base.html" %}
+{% load static %}
+{% block title %}My Success E-Learning Earning Platform{% endblock title %}
+{% block css_link %}
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{% static "css/common/header.css" %}">
+    <link rel="stylesheet" href="{% static "css/home_page/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/common/footer.css" %}">
+{% endblock css_link %}
+{% block header_section %}
+    {% include "../common/header.html" %}
+{% endblock header_section %}
+{% block main_content %}
+    {% include "./banner.html" %}
+    {% include "./special_feature.html" %}
+    {% if user.is_authenticated and user.account_type == "user" %}
+        <section class="live-class-section">
+            <div class="common-wrap">
+                <div class="grid live-class-inner">
+                    <div class="flex flex-col w-full">
+                        {% include "./help_line.html" %}
+                    </div>
+                    <div class="flex flex-col w-full">
+                        {% include "./live_class.html" %}
+                    </div>
+                </div>
+                <div class="flex flex-col w-full">
+                    {% include "./admin_help_line.html" %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    {% include "./user_review.html" %}
+    {% include "./achievement.html" %}
+{% endblock main_content %}
+{% block footer_section %}
+    {% include "../common/footer.html" %}
+{% endblock footer_section %}
+{% block js_link %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{% static "js/home_page/index.js" %}" defer></script>
+{% endblock js_link %}

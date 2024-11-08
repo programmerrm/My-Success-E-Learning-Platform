@@ -1,0 +1,20 @@
+{% load static %}
+<section class="achievement-section">
+    <div class="common-wrap">
+        <div class="grid achievement-inner">
+            {% if achievement_item %}
+                {% for achievement in achievement_item %}
+                    <div class="flex flex-row align-items-center justify-space-between w-full achievement-item">
+                        <div class="flex flex-col achievement-item-icon">
+                            <img src="{{ achievement.icon.url }}" alt="{{ achievement.title }}" loading="lazy" decoding="async">
+                        </div>
+                        <div class="flex flex-col achievement-item-content">
+                            <h4>{{ achievement.title }}</h4>
+                            <p>{{ achievement.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>

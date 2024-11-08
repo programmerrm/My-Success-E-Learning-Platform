@@ -1,0 +1,32 @@
+{% extends "../common/base.html" %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+{% block css_link %}
+    <link rel="stylesheet" href="{% static "css/auth/style.css" %}">
+{% endblock css_link %}
+{% block main_content %}
+    <section>
+        <div class="grid section-inner">
+            {% include "./content.html" %}
+            <div class="flex flex-col justify-content-center w-full form-wrapper">
+                <div class="flex flex-col w-full form-title">
+                    <h2>Sign In</h2>
+                    <p class="flex flex-row align-items-center w-full">New User? <a href="{% url "user_register" %}"> Create an Account</a></p>
+                </div>
+                <form class="flex flex-col" action="{% url 'user_login' %}" method="POST" enctype="multipart/form-data" autocomplete="off" novalidate>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <p class="forgot-password">
+                        <a href="{% url "password_reset" %}">Forgot Password?</a>
+                    </p>
+                    <div>
+                        <button class="btn" type="submit">Sign In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock main_content %}
+{% block js_link %}
+    <script src="{% static "js/auth/index.js" %}" defer></script>
+{% endblock js_link %}

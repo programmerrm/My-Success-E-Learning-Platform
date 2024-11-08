@@ -1,0 +1,154 @@
+section {
+    height: 100vh;
+}
+
+.section-inner {
+    grid-template-columns: repeat(2, 41.5% 58.5%);
+    height: 100%;
+}
+
+.content-bar {
+    row-gap: 20px;
+    padding: 20px 80px;
+}
+
+.content-bar .title {
+    color: var(--white-color);
+    font-size: 1.5rem;
+    font-weight: 400;
+    max-width: 75%;
+}
+
+.form-wrapper {
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 20px 20px;
+    row-gap: 20px;
+}
+
+.form-title {
+    row-gap: 10px;
+}
+
+.form-title h2 {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.form-title p {
+    column-gap: 5px;
+}
+
+.form-title p a {
+    color: var(--theme-color);
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+form {
+    row-gap: 10px;
+}
+
+form p {
+    display: flex;
+    flex-flow: column wrap;
+    row-gap: 5px;
+    width: 100%;
+}
+
+form p label {
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: var(--body-font-family);
+}
+
+.register p:nth-child(10n+3) {
+    width: 30%;
+}
+
+.register p:nth-child(10n+4) {
+    width: 65%;
+}
+
+.register p:nth-child(10n+10) {
+    flex-flow: row wrap !important;
+    column-gap: 5px;
+}
+
+.register p:nth-child(10n+10) label {
+    font-size: 15px;
+    font-weight: 400;
+    font-family: var(--body-font-family);
+    order: 1;
+}
+
+form p input,
+select {
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: var(--body-font-family);
+    background-color: var(--white-color);
+    color: var(--gray-color);
+    border: 1px solid var(--disable-color);
+    transition: all ease 0.3s;
+}
+
+form p input:focus {
+    border: 1px solid var(--theme-color);
+}
+
+.forgot-password a {
+    color: var(--theme-color);
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+@media only screen and (min-width: 500px) and (max-width: 767px) {
+    .section-inner {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .content-bar {
+        row-gap: 50px;
+        padding: 10px 20px;
+    }
+    .content-bar .title {
+        max-width: 90%;
+    }
+    .form-wrapper {
+        max-width: 80%;
+    }
+}
+
+@media only screen and (max-width: 499px) {
+    .section-inner {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .content-bar {
+        row-gap: 40px;
+        padding: 10px 20px;
+    }
+    .content-bar .title {
+        max-width: 100%;
+        font-size: 1.2rem;
+    }
+    .form-wrapper {
+        max-width: 100%;
+    }
+    .register p:nth-child(10n+3) {
+        width: 100%;
+    }
+    .register p:nth-child(10n+4) {
+        width: 100%;
+    }
+    .register p:nth-child(10n+10) label {
+        font-size: 14px;
+    }
+    form p input, select {
+        padding: 10px 20px;
+    }
+    form p label {
+        font-weight: 400;
+    }
+}

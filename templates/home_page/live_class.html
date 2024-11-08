@@ -1,0 +1,19 @@
+{% load static %}
+<div class="flex flex-col w-full live-class-info">
+    <h2>Join Live Classes</h2>
+    <div class="flex flex-col w-full live-class-info-inner">
+        <div class="flex flex-col w-full live-class-info-wrapper">
+            {% if live_class %}
+                {% for class in live_class %}
+                    <div class="flex flex-row justify-space-between align-items-center w-full live-class-info-item">
+                        <div class="flex flex-col live-class-info-item-date">
+                            <p>Class Topic: {{ class.class_topic }}</p>
+                            <span>Joining Time: {{ class.joining_time }}</span>
+                        </div>
+                        <a href="{{ class.join_meeting_url }}">Join Metting</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>

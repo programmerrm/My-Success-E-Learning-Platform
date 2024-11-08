@@ -1,0 +1,51 @@
+<header class="header-section">
+    <div class="common-wrap">
+        <div class="flex flex-row align-items-center justify-space-between w-full header-inner">
+            <a class="logo" href="{% url "home_page" %}">
+                <img src="{{ logo.logo.url }}" alt="logo" loading="lazy" decoding="async">
+            </a>
+            <nav class="flex flex-col nav-wrap">
+                <button class="menu-close-btn mobi" type="button">
+                    <i class="ri-close-fill"></i>
+                </button>
+                {% if user.is_authenticated and user.account_type == "user" %}
+                    <ul class="flex flex-row">
+                        <li>
+                            <a class="btn" href="">My Learning</a>
+                        </li>
+                        <li>
+                            <a class="btn" href="">Home Work</a>
+                        </li>
+                        <li>
+                            <a class="btn" href="">Blog</a>
+                        </li>
+                        <li>
+                            <a class="btn" href="{% url "user_profile" %}">Profile Settings</a>
+                        </li>
+                        <li>
+                            <a class="btn" href="{% url "user_logout" %}">Log Out</a>
+                        </li>
+                    </ul>
+                {% else %}
+                    <ul class="flex flex-row">
+                        <li>
+                            <a class="btn" href="">Blog</a>
+                        </li>
+                        <li>
+                            <a class="btn" href="{% url "user_login" %}">Sign In</a>
+                        </li>
+                        <li>
+                            <a class="btn" href="{% url "sub_admin_login" %}">Subadmin Login</a>
+                        </li>
+                        <li>
+                            <a class="btn" href="/admin">Admin Login</a>
+                        </li>
+                    </ul>
+                {% endif %}
+            </nav>            
+            <button class="menu-open-btn mobi" type="button">
+                <i class="ri-menu-line"></i>
+            </button>
+        </div>
+    </div>
+</header>

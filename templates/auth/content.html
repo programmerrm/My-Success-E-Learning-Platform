@@ -1,0 +1,12 @@
+{% load static %}
+<div class="flex flex-col justify-space-between w-full bg-style content-bar" style="background-image: url('{% static "images/account-bg.png" %}')">
+    <a class="logo" href="{% url "home_page" %}">
+        <img src="{{ logo.logo.url }}" alt="logo" loading="lazy" decoding="async">
+    </a>
+    <h2 class="title">
+        {{ sidebar.title }}
+    </h2>
+    <div class="flex flex-col w-full">
+        <img src="{{ sidebar.banner.url }}" alt="banner" loading="lazy" decoding="async">
+    </div>
+</div>
