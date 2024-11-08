@@ -1,9 +1,0 @@
-{% load static %}
-<div class="flex flex-col w-full">
-    <h2>Trainer Create</h2>
-    <form action="{% url "trainer_create" %}" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Create Trainer</button>
-    </form>
-</div>
